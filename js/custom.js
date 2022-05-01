@@ -231,4 +231,43 @@ $(document).ready(function(){
 		$modal.find("input[name=eq_id]").val(id);
 	});
 
+	// HÓA ĐƠN
+	// XỬ LÝ SỰ KIỆN SỬA HÓA ĐƠN
+	$("body").on("click", ".btn-showhd", function(){
+		$this = $(this);
+		$modal = $("#DetailHoaDon");
+		// lấy id
+		var id = $this.data("id");
+		console.log("id hoa don: ", id);
+		// ajax lay data tu id
+		$.ajax({
+			url: "./controller/hoadon_sua_ajax.php?id=" + id,
+			type: "json"
+		}).done(function(resp){
+			// neu thanh cong
+			if(resp.result){
+				
+				// fill data lay tu api
+				$modal.find("input[name=hoadon_id]").val(resp.data.hoadon_id);
+				$modal.find("input[name=eq_id]").val(resp.data.last_name);
+				$modal.find("input[name=eq_name]").val(resp.data.eq_name);
+				$modal.find("input[name=ncc_id]").val(resp.data.ncc_name);
+				$modal.find("input[name=ngaylaphoadon]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hoadon_soluong]").val(resp.data.soluong);
+				$modal.find("input[name=total]").val(resp.data.total);
+				$modal.find("input[name=hoadon_type]").val(resp.data.hoadon_type);
+				// hien modal
+				$modal.modal("show");
+			}else{
+				alert(resp.message);
+			}
+			
+		}).fail(function(err){
+			// thong bao loi
+			// code in here
+			alert("Lay that bai")
+		});
+		
+	});
+
 })

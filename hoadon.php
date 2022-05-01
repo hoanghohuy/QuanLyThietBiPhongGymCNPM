@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -59,13 +57,11 @@
                 Profiles
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-user-circle"></i>
                     <span>CÁ NHÂN</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cá nhân:</h6>
                         <a class="collapse-item" href="profile.php">Thông tin</a>
@@ -84,8 +80,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-users"></i>
                     <span>THÀNH VIÊN</span>
                 </a>
@@ -122,7 +117,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-            
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -147,11 +142,9 @@
                     </form>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -165,18 +158,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -191,15 +180,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">NHÓM 17</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -243,158 +229,61 @@
                                     <thead>
                                         <tr>
                                             <th>Mã hóa đơn</th>
-                                            <th>Tên thiết bị</th>
+                                            <th>Người lập phiếu</th>
+                                            <th>Thiết bị</th>
                                             <th>Nhà cung cấp</th>
+                                            <th>Ngày lập phiếu</th>
                                             <th>Số lượng</th>
-                                            <th>Ngày nhập hàng</th>
-                                            <th>Giá</th>
+                                            <th>Thành tiền</th>
                                             <th>Loại hóa đơn</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Mã hóa đơn</th>
-                                            <th>Tên thiết bị</th>
+                                            <th>Người lập phiếu</th>
+                                            <th>Thiết bị</th>
                                             <th>Nhà cung cấp</th>
+                                            <th>Ngày lập phiếu</th>
                                             <th>Số lượng</th>
-                                            <th>Ngày nhập hàng</th>
-                                            <th>Giá</th>
+                                            <th>Thành tiền</th>
                                             <th>Loại hóa đơn</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1001</td>
-                                            <td>Máy chạy bộ</td>
-                                            <td>Trumgym.vn</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>Nhập hàng</td>
-                                        </tr>
+                                        <?php
+                                        require_once './connect/conn.php';
+                                        $Sql_Hoadon = "SELECT h.hoadon_id, s.last_name, e.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
+                                        FROM hoadon as h, nhacungcap as n, staff as s, equipment as e 
+                                        WHERE h.staff_id = s.staff_id AND h.ncc_id = n.ncc_id AND h.eq_id = e.eq_id";
+                                        $result = $conn->query($Sql_Hoadon);
+                                        ?>
+                                        <?php if ($result->num_rows > 0)
+                                            while ($row = $result->fetch_assoc()) : ?>
+                                            <tr>
+                                                <td><?= $row['hoadon_id'] ?></td>
+                                                <td><?= $row['last_name'] ?></td>
+                                                <td><?= $row['eq_name'] ?></td>
+                                                <td><?= $row['ncc_name'] ?></td>
+                                                <td><?= $row['ngaylaphoadon'] ?></td>
+                                                <td><?= $row['soluong'] ?></td>
+                                                <td><?= $row['total'] ?></td>
+                                                <td><?= $row['hoadon_type'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-showhd" data-toggle="modal" data-target="#DetailHoaDon" data-id="<?php echo $row['hoadon_id']?>" ><i class="fas fa-eye"></i></button>
+                                                    <button type="button" class="btn btn-primary btn-edittb" data-toggle="modal" data-target="#EditHoaDon"><i class="fas fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-xoatb" data-toggle="modal" data-target="#DeleteHoaDon"><i class='fas fa-trash'></i></i></button>
+                                                </td>
+                                            </tr>
+                                        <?php endwhile; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                <button type="button" class="btn btn-primary">Nhập hóa đơn mới</button>
+                    <button type="button" class="btn btn-primary" data-toggle='modal' data-target="#AddHoaDon">Nhập hóa đơn mới</button>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -422,9 +311,305 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- MODAL THÊM HÓA ĐƠN MỚI -->
+    <div class="modal fade" id="AddHoaDon" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm hóa đơn mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="./controller/hoadon_them.php">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
+                            <input type="text" class="form-control" name="hoadon_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
+                            <select class="form-control" name="eq_id">
+                                <?php
+                                $sql = "SELECT eq_id, eq_name from equipment";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row["eq_id"] . "'>" . $row["eq_name"] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <!-- // nha cung cap -->
+                        <div class="form-group">
+                            <label>Tên nhà cung cấp</label>
+                            <select class="form-control" name="ncc_id">
+                                <?php
+                                $sql = "SELECT ncc_id, ncc_name from nhacungcap";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo  "<option value='" . $row["ncc_id"] . "'>" . $row["ncc_name"] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số lượng:</label>
+                            <input type="text" class="form-control" name="soluong" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Ngày lập hóa đơn:</label>
+                            <input type="text" class="form-control" name="ngaylaphoadon" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Thành tiền:</label>
+                            <input readonly type="text" class="form-control" name="total" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
+                            <select class="form-control" name="hoadon_type">
+                                <option value="Nhập hàng"> Nhập hàng </option>
+                                <option value="Xuất hàng"> Xuất hàng </option>
+                                <option value="Trả hàng"> Trả hàng </option>
+                                <option value="Gửi bảo hành"> Gửi bảo hành </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="AddHoaDon">Thêm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SỬA HÓA ĐƠN -->
+    <div class="modal fade" id="EditHoaDon" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin hóa đơn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="./controller/themthietbi.php">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
+                            <input readonly type="text" class="form-control" name="eq_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
+                            <input type="text" class="form-control" name="eq_name" required>
+                        </div>
+                        <!-- // nha cung cap -->
+                        <div class="form-group">
+                            <label>Tên nhà cung cấp</label>
+                            <select class="form-control" name="eq_ncc">
+                                <?php
+                                $sql = "SELECT ncc_id, ncc_name from nhacungcap";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo            "<option value='" . $row["ncc_id"] . "'>" . $row["ncc_name"] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số lượng:</label>
+                            <input type="text" class="form-control" name="eq_quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
+                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Thành tiền:</label>
+                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
+                            <select class="form-control" name="hoadon_type">
+                                <option value="Nhập hàng"> Nhập hàng </option>
+                                <option value="Xuất hàng"> Xuất hàng </option>
+                                <option value="Trả hàng"> Trả hàng </option>
+                                <option value="Gửi bảo hành"> Gửi bảo hành </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="ThemThietBi">Sửa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL XEM HÓA ĐƠN -->
+    <div class="modal fade" id="DetailHoaDon" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm thông tin hóa đơn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="./controller/themthietbi.php">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
+                            <input readonly type="text" class="form-control" name="eq_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
+                            <input readonly type="text" class="form-control" name="eq_name" required>
+                        </div>
+                        <!-- // nha cung cap -->
+                        <div class="form-group">
+                            <label>Tên nhà cung cấp</label>
+                            <select readonly class="form-control" name="eq_ncc">
+                                <?php
+                                $sql = "SELECT ncc_id, ncc_name from nhacungcap";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo            "<option value='" . $row["ncc_id"] . "'>" . $row["ncc_name"] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số lượng:</label>
+                            <input readonly type="text" class="form-control" name="eq_quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
+                            <input readonly type="text" class="form-control" name="eq_ngaynhaphang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input readonly type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Thành tiền:</label>
+                            <input readonly type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
+                            <select readonly class="form-control" name="hoadon_type">
+                                <option value="Nhập hàng"> Nhập hàng </option>
+                                <option value="Xuất hàng"> Xuất hàng </option>
+                                <option value="Trả hàng"> Trả hàng </option>
+                                <option value="Gửi bảo hành"> Gửi bảo hành </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">In Hóa Đơn</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL XÓA HÓA ĐƠN -->
+    <div class="modal fade" id="DeleteHoaDon" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm hóa đơn mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="./controller/themthietbi.php">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
+                            <input type="text" class="form-control" name="eq_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
+                            <input type="text" class="form-control" name="eq_name" required>
+                        </div>
+                        <!-- // nha cung cap -->
+                        <div class="form-group">
+                            <label>Tên nhà cung cấp</label>
+                            <select class="form-control" name="eq_ncc">
+                                <?php
+                                $sql = "SELECT ncc_id, ncc_name from nhacungcap";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo            "<option value='" . $row["ncc_id"] . "'>" . $row["ncc_name"] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Số lượng:</label>
+                            <input type="text" class="form-control" name="eq_quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
+                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Thành tiền:</label>
+                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
+                            <select class="form-control" name="hoadon_type">
+                                <option value="Nhập hàng"> Nhập hàng </option>
+                                <option value="Xuất hàng"> Xuất hàng </option>
+                                <option value="Trả hàng"> Trả hàng </option>
+                                <option value="Gửi bảo hành"> Gửi bảo hành </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-warning" name="ThemThietBi">Xóa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -451,6 +636,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/custom.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>

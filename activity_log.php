@@ -116,7 +116,7 @@
 
             <!-- Nav Item - Hóa đơn -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="hoadon.php">
                     <i class="fas fa-file-invoice"></i>
                     <span>HÓA ĐƠN</span></a>
             </li>
@@ -260,7 +260,7 @@
                                     <tbody>
                                         <?php
                                         require_once "./connect/conn.php";
-                                        $sql_log = "SELECT * from record ORDER BY record_date DESC";
+                                        $sql_log = "SELECT * from record ORDER BY record_id ASC";
                                         $result = $conn->query($sql_log);
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
