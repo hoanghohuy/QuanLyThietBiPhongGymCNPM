@@ -19,14 +19,14 @@ if (isset($_POST["login"])) {
         $password = $_POST['password'];
 
         // cau query
-        $sql_login = "SELECT `username`, `pwd` FROM `account` WHERE `username` = '$username' and `pwd` = '$password'";
+        $sql_login = "SELECT `username`, `pwd` FROM `account` WHERE `username` = '$username' and `pwd` = '$password' and `isActive` = '1'";
         $result = mysqli_query($conn, $sql_login);
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             header("Location: ./dashboard.php");
             $_SESSION["username"] = $username;
         } else
-            $errors['login']['required'] = 'Thông tin tài khoản hoặc mật khẩu không chính xác!';
+            $errors['login']['required'] = 'Thông tin tài khoản, mật khẩu không chính xác hoặc đang bị khóa!';
     }
 }
 ?>

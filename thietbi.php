@@ -247,7 +247,6 @@
                                             <th>Mã TB</th>
                                             <th>Tên Thiết Bị</th>
                                             <th>Nhà Cung Cấp</th>
-                                            <th>Số lượng</th>
                                             <th>Ngày nhập hàng</th>
                                             <th>Bảo hành tới</th>
                                             <th>Tình trạng BH</th>
@@ -261,7 +260,6 @@
                                             <th>Mã TB</th>
                                             <th>Tên Thiết Bị</th>
                                             <th>Nhà Cung Cấp</th>
-                                            <th>Số lượng</th>
                                             <th>Ngày nhập hàng</th>
                                             <th>Bảo hành tới</th>
                                             <th>Tình trạng BH</th>
@@ -274,7 +272,7 @@
 
                                     <?php
                                         require_once './connect/conn.php';
-                                        $sql_eq = "SELECT e.eq_id, e.eq_name, n.ncc_name, e.eq_quantity, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status FROM equipment as e, nhacungcap as n WHERE e.ncc_id = n.ncc_id";
+                                        $sql_eq = "SELECT e.eq_id, e.eq_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status FROM equipment as e, nhacungcap as n WHERE e.ncc_id = n.ncc_id";
                                         $result = $conn->query($sql_eq);
                                         ?>
                                        <?php if($result->num_rows > 0) 
@@ -283,7 +281,6 @@
                                             <td><?= $row['eq_id'] ?></td>
                                             <td><?= $row['eq_name'] ?></td>
                                             <td><?= $row['ncc_name'] ?></td>
-                                            <td><?= $row['eq_quantity'] ?></td>
                                             <td><?= $row['eq_ngaynhaphang'] ?></td>
                                             <td><?= $row['eq_ngayhethanbaohanh']?></td>
                                             <td><?php
@@ -382,10 +379,10 @@
                               ?>
                         </select>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
                             <input type="text" class="form-control" name="eq_quantity" required>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
                             <input type="text" class="form-control" name="eq_ngaynhaphang" required>
@@ -445,10 +442,10 @@
                               ?>
                         </select>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
                             <input type="text" class="form-control" name="eq_quantity" required>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
                             <input type="text" class="form-control" name="eq_ngaynhaphang" required>
@@ -460,6 +457,13 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Đơn giá:</label>
                             <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                        <label for="phongban">Tình trạng</label>
+                        <select class="form-control" name="eq_status">
+                        <option value="Tốt">Tốt</option>
+                        <option value="Hư hỏng">Hư hỏng</option>
+                        </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -508,10 +512,10 @@
                               ?>
                         </select>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
                             <input readonly type="text" class="form-control" name="eq_quantity" required>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
                             <input readonly type="text" class="form-control" name="eq_ngaynhaphang" required>
@@ -523,6 +527,13 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Đơn giá:</label>
                             <input readonly type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                        </div>
+                        <div class="form-group">
+                        <label for="phongban">Tình trạng</label>
+                        <select readonly class="form-control" name="eq_ncc">
+                            <option value="Tốt">Tốt</option>
+                            <option value="Hư hỏng">Hư hỏng</option>
+                        </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -571,7 +582,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="./controller/log_out.php">Logout</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -222,64 +226,71 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Danh Sách Nhân Viên</h6>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã NV</th>
-                                            <th>Họ</th>
-                                            <th>Tên</th>
-                                            <th>Ngày sinh</th>
-                                            <th>username</th>
-                                            <!-- <th>password</th> -->
-                                            <th>Chức vụ</th>
-                                            <th>Trạng thái</th>
-                                            <th>Hành động</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Mã NV</th>
-                                            <th>Họ</th>
-                                            <th>Tên</th>
-                                            <th>Ngày sinh</th>
-                                            <th>username</th>
-                                            <!-- <th>password</th> -->
-                                            <th>Chức vụ</th>
-                                            <th>Trạng thái</th>
-                                            <th>Hành động</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        require_once './connect/conn.php';
-                                        $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
-                                        $result = $conn->query($sql_user)
-                                        ?>
-                                        <?php if($result->num_rows > 0) 
-                                        while ($row = $result->fetch_assoc()): ?>
+                        <?php
+                        if ($_SESSION["username"] == 'admin') : ?>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã NV</th>
+                                                <th>Họ</th>
+                                                <th>Tên</th>
+                                                <th>Ngày sinh</th>
+                                                <th>username</th>
+                                                <!-- <th>password</th> -->
+                                                <th>Chức vụ</th>
+                                                <th>Trạng thái</th>
+                                                <th>Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Mã NV</th>
+                                                <th>Họ</th>
+                                                <th>Tên</th>
+                                                <th>Ngày sinh</th>
+                                                <th>username</th>
+                                                <!-- <th>password</th> -->
+                                                <th>Chức vụ</th>
+                                                <th>Trạng thái</th>
+                                                <th>Hành động</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                            require_once './connect/conn.php';
+                                            $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
+                                            $result = $conn->query($sql_user)
+                                            ?>
+                                            <?php if ($result->num_rows > 0)
+                                                while ($row = $result->fetch_assoc()) : ?>
 
-                                        <tr>
-                                        <td><?=$row["id"]?></td>
-                                        <td><?=$row["first_name"] ?></td>
-                                        <td><?=$row["last_name"] ?></td>
-                                        <td><?=$row["dob"] ?></td>
-                                        <td><?=$row["username"] ?></td>
-                                        <td><?=($row["role"] == 0 ? "Admin" : "Nhân viên") ?></td>
-                                        <td class="<?=($row["isActive"] == 1 ? "btn-success" : "btn-warning") ?>"><?=($row["isActive"] == 1 ? "Hoạt động" : "Bị Khóa") ?></td>
-                                        <td>
-                                        <button type='button' class='btn btn-primary btn-suanv' data-toggle='modal' data-target='#SuaNV_Modal' data-id="<?php echo $row["id"] ?>"><i class="fas fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger btn-xoanv" data-toggle="modal" data-target='#DeteteNV_Modal' data-id="<?php echo $row["id"] ?>"><i class='fas fa-trash'></i></button>
-                                        </td>
-                                        </tr>
-                                        <?php endwhile ?>
-                                    </tbody>
-                                </table>
+                                                <tr>
+                                                    <td><?= $row["id"] ?></td>
+                                                    <td><?= $row["first_name"] ?></td>
+                                                    <td><?= $row["last_name"] ?></td>
+                                                    <td><?= $row["dob"] ?></td>
+                                                    <td><?= $row["username"] ?></td>
+                                                    <td><?= ($row["role"] == 0 ? "Admin" : "Nhân viên") ?></td>
+                                                    <td class="<?= ($row["isActive"] == 1 ? "btn-success" : "btn-warning") ?>"><?= ($row["isActive"] == 1 ? "Hoạt động" : "Bị Khóa") ?></td>
+                                                    <td>
+                                                        <button type='button' class='btn btn-primary btn-suanv' data-toggle='modal' data-target='#SuaNV_Modal' data-id="<?php echo $row["id"] ?>"><i class="fas fa-edit"></i></button>
+                                                        <button type="button" class="btn btn-danger btn-xoanv" data-toggle="modal" data-target='#DeteteNV_Modal' data-id="<?php echo $row["id"] ?>"><i class='fas fa-trash'></i></button>
+                                                    </td>
+                                                </tr>
+                                            <?php endwhile ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle='modal' data-target='#AddUserModal'">Thêm nhân viên mới</button>
                             </div>
-                        </div>
+
+                        <?php else : ?>
+                            <h6 class='m-0 font-weight-bold text-primary'>Bạn không có quyền thực hiện hành động này!</h6>
+                        <?php endif ?>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle='modal' data-target='#AddUserModal'">Thêm nhân viên mới</button>
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -321,7 +332,7 @@
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
+                            <a class="btn btn-primary" href="./controller/log_out.php">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -380,8 +391,8 @@
                 </div>
             </div>
 
-                        <!-- Modal Sua nhan vien -->
-                        <div class="modal fade" id="SuaNV_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <!-- Modal Sua nhan vien -->
+            <div class="modal fade" id="SuaNV_Modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -439,8 +450,8 @@
                     </div>
                 </div>
             </div>
-                        <!-- Modal Xóa nhân viên -->
-                        <div class="modal fade" id="DeteteNV_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <!-- Modal Xóa nhân viên -->
+            <div class="modal fade" id="DeteteNV_Modal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

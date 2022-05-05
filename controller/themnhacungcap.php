@@ -1,7 +1,8 @@
-<?php 
-    require '../connect/conn.php';
+<?php
+    session_start();
     $session_name = $_SESSION['username'];
     $dateTimeNow = Date("d/m/Y H:i:s");
+    require '../connect/conn.php';
     if(isset($_POST["ThemNhaCungCap"])) {
         $ncc_id = $_POST["ncc_id"];
         $ncc_name = $_POST["ncc_name"];
