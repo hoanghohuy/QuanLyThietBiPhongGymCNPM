@@ -6,7 +6,7 @@
     if (isset($_POST["XoaThietBi"])) {
         $eq_id = $_POST["eq_id"];
         $sqlxoa ="DELETE FROM equipment WHERE `eq_id` = '$eq_id'";
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow', 'Xóa thiết bị')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Xóa thiết bị')";
         $result_log = $conn->query($SQL_WriteLog);
         $result = $conn->query($sqlxoa);
         if($result == true  && $result_log == true) {

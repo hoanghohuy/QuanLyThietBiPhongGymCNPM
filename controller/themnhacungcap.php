@@ -12,7 +12,7 @@
         $sql_ThemNCC = "INSERT INTO nhacungcap (ncc_id, ncc_name, ncc_address, ncc_matchday, ncc_note) VALUES ('$ncc_id', '$ncc_name','$ncc_address','$ncc_matchday','$ncc_note')";
         $result = $conn->query($sql_ThemNCC);
         // write log
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Thêm nhà cung cấp')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name','Thêm nhà cung cấp')";
         $result_log = $conn->query($SQL_WriteLog);
         if($result == true && $result_log == true) {
         header("Location: ../nhacungcap.php");

@@ -13,7 +13,7 @@
         $u_role = $_POST["u_role"];
         $sql_ThemNv2 = "INSERT INTO staff (staff_id, first_name, last_name, dob) VALUES ('$u_id', '$u_fn', '$u_ln', '$u_dob')";
         $sql_ThemNv = "INSERT INTO account (id, username, pwd, `role`, isActive) VALUES ('$u_id','$u_user', '$u_pwd', '$u_role', '1')";
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Thêm nhân viên mới')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Thêm nhân viên mới')";
         $result = $conn->query($sql_ThemNv);
         $result2 = $conn->query($sql_ThemNv2);
         $result_log = $conn->query($SQL_WriteLog);

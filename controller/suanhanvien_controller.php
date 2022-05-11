@@ -15,7 +15,7 @@
     $sql_Sua_User = "UPDATE account as a, staff as s SET s.first_name = '$u_fn', s.last_name = '$u_ln', s.dob = '$u_dob', a.username = '$u_user', a.pwd = '$u_pwd', a.role = '$u_role', a.isActive = '$u_isActive' WHERE a.id = s.staff_id AND id ='$u_id'";
     $result = $conn->query($sql_Sua_User);
     // write log
-    $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Sửa nhân viên')";
+    $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Sửa nhân viên')";
     $result_log = $conn->query($SQL_WriteLog);
 
        if($result == true && $result_log ) {

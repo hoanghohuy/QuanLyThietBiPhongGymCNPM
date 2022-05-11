@@ -14,7 +14,7 @@
        $eq_status = $_POST["eq_status"];
        $SQL_SuaEQ = "UPDATE equipment SET eq_name = '$eq_name', `ncc_id` = '$eq_ncc', `eq_ngaynhaphang`='$eq_ngaynhaphang', `eq_ngayhethanbaohanh`='$eq_ngayhethanbaohanh', `eq_dongia`='$eq_dongia', `eq_status` = '$eq_status' WHERE `eq_id` = '$eq_id'";
        $result = $conn->query($SQL_SuaEQ);
-       $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Sửa thông tin thiết bị')";
+       $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Sửa thông tin thiết bị')";
        $result_log = $conn->query($SQL_WriteLog);
        if($result == true  && $result_log == true) {
        header("Location: ../thietbi.php");

@@ -274,7 +274,17 @@ if(!isset($_SESSION['username']) || !$_SESSION['username']) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 nhà cung cấp</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php
+                                            require_once './connect/conn.php';
+                                            $sql_count_ncc = "SELECT COUNT(ncc_id) FROM `nhacungcap`";
+                                            $result = $conn->query($sql_count_ncc);
+                                            if($result->num_rows > 0) {
+                                            $row = $result->fetch_assoc();
+                                            echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>" .$row["COUNT(ncc_id)"] ."</div>";
+                                            }
+                                            ?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

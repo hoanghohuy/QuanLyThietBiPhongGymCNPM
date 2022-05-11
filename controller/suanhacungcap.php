@@ -11,7 +11,7 @@
        $ncc_note = $_POST["ncc_note"];
        $SQL_SuaNCC = "UPDATE nhacungcap SET ncc_name = '$ncc_name', `ncc_address` = '$ncc_address', `ncc_matchday` = '$ncc_matchday', `ncc_note`='$ncc_note' WHERE ncc_id = '$ncc_id'";
        $result = $conn->query($SQL_SuaNCC);
-       $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Sửa nhà cung cấp')";
+       $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Sửa nhà cung cấp')";
        $result_log = $conn->query($SQL_WriteLog);
        if($result == true  && $result_log == true) {
        header("Location: ../nhacungcap.php");

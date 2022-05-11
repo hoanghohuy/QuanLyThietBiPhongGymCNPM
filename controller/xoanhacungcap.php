@@ -7,7 +7,7 @@
         $ncc_id = $_POST["ncc_id"];
         $sqlxoa ="DELETE FROM nhacungcap WHERE `ncc_id` = '$ncc_id'";
         $result = $conn->query($sqlxoa);
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Xóa nhà cung cấp')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Xóa nhà cung cấp')";
         $result_log = $conn->query($SQL_WriteLog);
         if($result == true  && $result_log == true) {
         header("Location: ../nhacungcap.php");

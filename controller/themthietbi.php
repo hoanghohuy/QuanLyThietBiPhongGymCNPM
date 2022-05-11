@@ -13,7 +13,7 @@
         $eq_dongia = $_POST["eq_dongia"];
         $sql_ThemTB = "INSERT INTO equipment (eq_id, eq_name, ncc_id, eq_ngaynhaphang, eq_ngayhethanbaohanh, eq_dongia, eq_status) VALUES ('$eq_id', '$eq_name','$eq_ncc','$eq_ngaynhaphang', '$eq_ngayhethanbaohanh','$eq_dongia','Tốt')";
         $result = $conn->query($sql_ThemTB);
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Thêm thiết bị')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Thêm thiết bị')";
         $result_log = $conn->query($SQL_WriteLog);
         if($result == true  && $result_log == true) {
         header("Location: ../thietbi.php");
