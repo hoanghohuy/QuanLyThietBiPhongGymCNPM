@@ -246,6 +246,7 @@
                                         <tr>
                                             <th>Mã TB</th>
                                             <th>Tên Thiết Bị</th>
+                                            <th>Nhóm thiết bị</th>
                                             <th>Nhà Cung Cấp</th>
                                             <th>Ngày nhập hàng</th>
                                             <th>Bảo hành tới</th>
@@ -259,6 +260,7 @@
                                         <tr>
                                             <th>Mã TB</th>
                                             <th>Tên Thiết Bị</th>
+                                            <th>Nhóm thiết bị</th>
                                             <th>Nhà Cung Cấp</th>
                                             <th>Ngày nhập hàng</th>
                                             <th>Bảo hành tới</th>
@@ -272,7 +274,7 @@
 
                                     <?php
                                         require_once './connect/conn.php';
-                                        $sql_eq = "SELECT e.eq_id, e.eq_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status FROM equipment as e, nhacungcap as n WHERE e.ncc_id = n.ncc_id";
+                                        $sql_eq = "SELECT e.eq_id, e.eq_name, g.group_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status FROM equipment as e, nhacungcap as n, equipment_group as g WHERE e.ncc_id = n.ncc_id AND e.group_id = g.group_id";
                                         $result = $conn->query($sql_eq);
                                         ?>
                                        <?php if($result->num_rows > 0) 
@@ -280,6 +282,7 @@
                                             <tr>
                                             <td><?= $row['eq_id'] ?></td>
                                             <td><?= $row['eq_name'] ?></td>
+                                            <td><?= $row['group_name'] ?></td>
                                             <td><?= $row['ncc_name'] ?></td>
                                             <td><?= $row['eq_ngaynhaphang'] ?></td>
                                             <td><?= $row['eq_ngayhethanbaohanh']?></td>
@@ -362,6 +365,24 @@
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
                             <input type="text" class="form-control" name="eq_name" required>
                         </div>
+                        <!-- Nhóm thiết bị -->
+                        <div class="form-group">
+                        <label>Tên nhóm thiết bị</label>
+                        <select class="form-control" name="group_id">
+                                <?php 
+                                        $sql = "SELECT group_id, group_name from equipment_group";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                        // Load dữ liệu lên website
+                                        while($row = $result->fetch_assoc()) {
+                                        echo            "<option value='".$row["group_id"]."'>" .$row["group_name"]."</option>";
+                                        }
+                                    }
+                              ?>
+                        </select>
+                        </div>
+
                         <!-- // nha cung cap -->
                         <div class="form-group">
                         <label>Tên nhà cung cấp</label>
@@ -425,6 +446,25 @@
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
                             <input type="text" class="form-control" name="eq_name" required>
                         </div>
+
+                        <!-- Nhóm thiết bị -->
+                        <div class="form-group">
+                        <label>Nhóm thiết bị</label>
+                        <select class="form-control" name="group_id">
+                                <?php 
+                                        $sql = "SELECT group_id, group_name from equipment_group";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                        // Load dữ liệu lên website
+                                        while($row = $result->fetch_assoc()) {
+                                        echo            "<option value='".$row["group_id"]."'>" .$row["group_name"]."</option>";
+                                        }
+                                    }
+                              ?>
+                        </select>
+                        </div>
+
                         <!-- // nha cung cap -->
                         <div class="form-group">
                         <label for="phongban">Tên nhà cung cấp</label>
@@ -494,6 +534,24 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
                             <input readonly type="text" class="form-control" name="eq_name" required>
+                        </div>
+
+                        <!-- Nhóm thiết bị -->
+                        <div class="form-group">
+                        <label>Tên nhóm thiết bị</label>
+                        <select readonly class="form-control" name="group_id">
+                                <?php 
+                                        $sql = "SELECT group_id, group_name from equipment_group";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                        // Load dữ liệu lên website
+                                        while($row = $result->fetch_assoc()) {
+                                        echo            "<option value='".$row["group_id"]."'>" .$row["group_name"]."</option>";
+                                        }
+                                    }
+                              ?>
+                        </select>
                         </div>
                         <!-- // nha cung cap -->
                         <div class="form-group">

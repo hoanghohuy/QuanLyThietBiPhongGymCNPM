@@ -272,9 +272,9 @@
                                                 <td><?= $row['total'] ?></td>
                                                 <td><?= $row['hoadon_type'] ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-showhd" data-toggle="modal" data-target="#DetailHoaDon" data-id="<?php echo $row['hoadon_id']?>" ><i class="fas fa-eye"></i></button>
-                                                    <button type="button" class="btn btn-primary btn-edittb" data-toggle="modal" data-target="#EditHoaDon"><i class="fas fa-edit"></i></button>
-                                                    <button type="button" class="btn btn-danger btn-xoatb" data-toggle="modal" data-target="#DeleteHoaDon"><i class='fas fa-trash'></i></i></button>
+                                                    <button type="button" class="btn btn-info btn-showhd" data-toggle="modal" data-target="#DetailHoaDon" data-id="<?php echo $row['hoadon_id'] ?>" ><i class="fas fa-eye"></i></button>
+                                                    <button type="button" class="btn btn-primary btn-edithd" data-toggle="modal" data-target="#EditHoaDon" data-id="<?php echo $row['hoadon_id']?>"><i class="fas fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-xoahd" data-toggle="modal" data-target="#DeleteHoaDon" data-id="<?php echo $row['hoadon_id']?>"><i class='fas fa-trash'></i></i></button>
                                                 </td>
                                             </tr>
                                         <?php endwhile; ?>
@@ -397,25 +397,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin hóa đơn</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa hóa đơn</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/themthietbi.php">
+                    <form method="post" action="./controller/hoadon_sua.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
-                            <input readonly type="text" class="form-control" name="eq_id" required>
+                            <input readonly type="text" class="form-control" name="hd_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Người lập hóa đơn:</label>
+                            <input type="text" class="form-control" name="hd_by" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
-                            <input type="text" class="form-control" name="eq_name" required>
+                            <input type="text" class="form-control" name="hd_eq_name" required>
                         </div>
                         <!-- // nha cung cap -->
                         <div class="form-group">
                             <label>Tên nhà cung cấp</label>
-                            <select class="form-control" name="eq_ncc">
+                            <select class="form-control" name="hd_eq_ncc">
                                 <?php
                                 $sql = "SELECT ncc_id, ncc_name from nhacungcap";
                                 $result = $conn->query($sql);
@@ -431,23 +435,19 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
-                            <input type="text" class="form-control" name="eq_quantity" required>
+                            <input type="text" class="form-control" name="hd_quantity" required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
-                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
-                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <label for="recipient-name" class="col-form-label">Ngày lập:</label>
+                            <input type="text" class="form-control" name="hd_createDate" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
-                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <input type="text" class="form-control" name="hd_total" required placeholder="đ">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
-                            <select class="form-control" name="hoadon_type">
+                            <select class="form-control" name="hd_type">
                                 <option value="Nhập hàng"> Nhập hàng </option>
                                 <option value="Xuất hàng"> Xuất hàng </option>
                                 <option value="Trả hàng"> Trả hàng </option>
@@ -456,7 +456,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="ThemThietBi">Sửa</button>
+                            <button type="submit" class="btn btn-primary" name="SuaHoaDon">Sửa</button>
                         </div>
                     </form>
                 </div>
@@ -469,57 +469,45 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm thông tin hóa đơn</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Xem thông tin hóa đơn</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/themthietbi.php">
+                    <form method="post" action="./controller/hoadon_xoa.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
-                            <input readonly type="text" class="form-control" name="eq_id" required>
+                            <input readonly type="text" class="form-control" name="hd_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Người lập hóa đơn:</label>
+                            <input readonly type="text" class="form-control" name="hd_by" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
-                            <input readonly type="text" class="form-control" name="eq_name" required>
+                            <input readonly type="text" class="form-control" name="hd_eq_name" required>
                         </div>
                         <!-- // nha cung cap -->
                         <div class="form-group">
                             <label>Tên nhà cung cấp</label>
-                            <select readonly class="form-control" name="eq_ncc">
-                                <?php
-                                $sql = "SELECT ncc_id, ncc_name from nhacungcap";
-                                $result = $conn->query($sql);
-
-                                if ($result->num_rows > 0) {
-                                    // Load dữ liệu lên website
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo            "<option value='" . $row["ncc_id"] . "'>" . $row["ncc_name"] . "</option>";
-                                    }
-                                }
-                                ?>
-                            </select>
+                            <input readonly type="text" class="form-control" name="hd_eq_ncc" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
-                            <input readonly type="text" class="form-control" name="eq_quantity" required>
+                            <input readonly type="text" class="form-control" name="hd_quantity" required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
-                            <input readonly type="text" class="form-control" name="eq_ngaynhaphang" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
-                            <input readonly type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <label for="recipient-name" class="col-form-label">Ngày lập:</label>
+                            <input readonly type="text" class="form-control" name="hd_createDate" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
-                            <input readonly type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <input readonly type="text" class="form-control" name="hd_total" required placeholder="đ">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
-                            <select readonly class="form-control" name="hoadon_type">
+                            <select readonly class="form-control" name="hd_type">
                                 <option value="Nhập hàng"> Nhập hàng </option>
                                 <option value="Xuất hàng"> Xuất hàng </option>
                                 <option value="Trả hàng"> Trả hàng </option>
@@ -541,25 +529,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm hóa đơn mới</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/themthietbi.php">
+                    <form method="post" action="./controller/hoadon_xoa.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
-                            <input type="text" class="form-control" name="eq_id" required>
+                            <input readonly type="text" class="form-control" name="hd_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Người lập hóa đơn:</label>
+                            <input readonly type="text" class="form-control" name="hd_by" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
-                            <input type="text" class="form-control" name="eq_name" required>
+                            <input readonly type="text" class="form-control" name="hd_eq_name" required>
                         </div>
                         <!-- // nha cung cap -->
                         <div class="form-group">
                             <label>Tên nhà cung cấp</label>
-                            <select class="form-control" name="eq_ncc">
+                            <select readonly class="form-control" name="hd_eq_ncc">
                                 <?php
                                 $sql = "SELECT ncc_id, ncc_name from nhacungcap";
                                 $result = $conn->query($sql);
@@ -575,23 +567,19 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
-                            <input type="text" class="form-control" name="eq_quantity" required>
+                            <input readonly type="text" class="form-control" name="hd_quantity" required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
-                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
-                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <label for="recipient-name" class="col-form-label">Ngày lập:</label>
+                            <input readonly type="text" class="form-control" name="hd_createDate" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
-                            <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
+                            <input readonly type="text" class="form-control" name="hd_total" required placeholder="đ">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
-                            <select class="form-control" name="hoadon_type">
+                            <select readonly class="form-control" name="hd_type">
                                 <option value="Nhập hàng"> Nhập hàng </option>
                                 <option value="Xuất hàng"> Xuất hàng </option>
                                 <option value="Trả hàng"> Trả hàng </option>
@@ -600,7 +588,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-warning" name="ThemThietBi">Xóa</button>
+                            <button type="submit" class="btn btn-danger" name="XoaHoaDon">Xóa</button>
                         </div>
                     </form>
                 </div>

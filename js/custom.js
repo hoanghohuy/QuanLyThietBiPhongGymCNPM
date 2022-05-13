@@ -232,30 +232,28 @@ $(document).ready(function(){
 	});
 
 	// HÓA ĐƠN
-	// XỬ LÝ SỰ KIỆN SỬA HÓA ĐƠN
+
+	// XỬ LÝ SỰ KIỆN XEM HÓA ĐƠN
 	$("body").on("click", ".btn-showhd", function(){
 		$this = $(this);
 		$modal = $("#DetailHoaDon");
 		// lấy id
 		var id = $this.data("id");
-		console.log("id hoa don: ", id);
-		// ajax lay data tu id
 		$.ajax({
 			url: "./controller/hoadon_sua_ajax.php?id=" + id,
 			type: "json"
 		}).done(function(resp){
 			// neu thanh cong
 			if(resp.result){
-				
 				// fill data lay tu api
-				$modal.find("input[name=hoadon_id]").val(resp.data.hoadon_id);
-				$modal.find("input[name=eq_id]").val(resp.data.last_name);
-				$modal.find("input[name=eq_name]").val(resp.data.eq_name);
-				$modal.find("input[name=ncc_id]").val(resp.data.ncc_name);
-				$modal.find("input[name=ngaylaphoadon]").val(resp.data.ngaylaphoadon);
-				$modal.find("input[name=hoadon_soluong]").val(resp.data.soluong);
-				$modal.find("input[name=total]").val(resp.data.total);
-				$modal.find("input[name=hoadon_type]").val(resp.data.hoadon_type);
+				$modal.find("input[name=hd_id]").val(resp.data.hoadon_id);
+				$modal.find("input[name=hd_by]").val(resp.data.last_name);
+				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
+				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
+				$modal.find("input[name=hd_total]").val(resp.data.total);
+				$modal.find("option[value='"+resp.data.hoadon_type+"']").attr('selected','true')
 				// hien modal
 				$modal.modal("show");
 			}else{
@@ -267,7 +265,75 @@ $(document).ready(function(){
 			// code in here
 			alert("Lay that bai")
 		});
-		
+	});
+
+	// XỬ LÝ SỰ KIỆN SỬA HÓA ĐƠN
+	$("body").on("click", ".btn-edithd", function(){
+		debugger;
+		$this = $(this);
+		$modal = $("#EditHoaDon");
+		// lấy id
+		var id = $this.data("id");
+		$.ajax({
+			url: "./controller/hoadon_sua_ajax.php?id=" + id,
+			type: "json"
+		}).done(function(resp){
+			// neu thanh cong
+			if(resp.result){
+				// fill data lay tu api
+				$modal.find("input[name=hd_id]").val(resp.data.hoadon_id);
+				$modal.find("input[name=hd_by]").val(resp.data.last_name);
+				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
+				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
+				$modal.find("input[name=hd_total]").val(resp.data.total);
+				$modal.find("option[value='"+resp.data.hoadon_type+"']").attr('selected','true')
+				// hien modal
+				$modal.modal("show");
+			}else{
+				alert(resp.message);
+			}
+			
+		}).fail(function(err){
+			// thong bao loi
+			// code in here
+			alert("Lay that bai")
+		});
+	});
+
+	// XỬ LÝ SỰ KIỆN XÓA HÓA ĐƠN
+	$("body").on("click", ".btn-xoahd", function(){
+		$this = $(this);
+		$modal = $("#DeleteHoaDon");
+		// lấy id
+		var id = $this.data("id");
+		$.ajax({
+			url: "./controller/hoadon_sua_ajax.php?id=" + id,
+			type: "json"
+		}).done(function(resp){
+			// neu thanh cong
+			if(resp.result){
+				// fill data lay tu api
+				$modal.find("input[name=hd_id]").val(resp.data.hoadon_id);
+				$modal.find("input[name=hd_by]").val(resp.data.last_name);
+				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
+				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
+				$modal.find("input[name=hd_total]").val(resp.data.total);
+				$modal.find("option[value='"+resp.data.hoadon_type+"']").attr('selected','true')
+				// hien modal
+				$modal.modal("show");
+			}else{
+				alert(resp.message);
+			}
+			
+		}).fail(function(err){
+			// thong bao loi
+			// code in here
+			alert("Lay that bai")
+		});
 	});
 
 })
