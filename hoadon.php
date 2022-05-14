@@ -255,9 +255,9 @@
                                     <tbody>
                                         <?php
                                         require_once './connect/conn.php';
-                                        $Sql_Hoadon = "SELECT h.hoadon_id, s.last_name, e.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
-                                        FROM hoadon as h, nhacungcap as n, staff as s, equipment as e 
-                                        WHERE h.staff_id = s.staff_id AND h.ncc_id = n.ncc_id AND h.eq_id = e.eq_id";
+                                        $Sql_Hoadon = "SELECT h.hoadon_id, s.last_name, h.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
+                                        FROM hoadon as h, nhacungcap as n, staff as s
+                                        WHERE h.staff_id = s.staff_id AND h.ncc_id = n.ncc_id";
                                         $result = $conn->query($Sql_Hoadon);
                                         ?>
                                         <?php if ($result->num_rows > 0)

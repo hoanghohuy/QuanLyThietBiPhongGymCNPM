@@ -91,7 +91,9 @@ $(document).ready(function(){
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
 				$modal.find("input[name=u_role]").val(resp.data.role);
-				$modal.find("input[name=u_isActive]").val(resp.data.isActive);
+				$modal.find("option[value='"+resp.data.role+"']").attr('selected','true')
+				// $modal.find("input[name=u_isActive]").val(resp.data.isActive);
+				$modal.find("option[value='"+resp.data.isActive+"']").attr('selected','true')
 				// hien modal
 				$modal.modal("show");
 			}else{
@@ -112,7 +114,6 @@ $(document).ready(function(){
 		$modal = $("#DeteteNV_Modal");
 		// lấy id
 		var id = $this.data("id");
-		alert("xoa id" + id)
 		// ajax lay data tu id
 		$.ajax({
 
@@ -129,7 +130,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
 				$modal.find("input[name=u_role]").val(resp.data.role);
-				$modal.find("input[name=u_isActive]").val(resp.data.isActive);
+				$modal.find("option[value='"+resp.data.role+"']").attr('selected','true')
 				// hien modal
 				$modal.modal("show");
 			}else{
@@ -167,7 +168,7 @@ $(document).ready(function(){
 				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang);
 				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh);
 				$modal.find("input[name=eq_dongia]").val(resp.data.eq_dongia);
-				$modal.find("input[name=eq_status]").val(resp.data.eq_status);
+				$modal.find("option[value='"+resp.data.eq_status+"']").attr('selected','true')
 				// hien modal
 				$modal.modal("show");
 			}else{
@@ -204,7 +205,7 @@ $(document).ready(function(){
 				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang);
 				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh);
 				$modal.find("input[name=eq_dongia]").val(resp.data.eq_dongia);
-				$modal.find("input[name=eq_status]").val(resp.data.eq_status);
+				$modal.find("option[value='"+resp.data.eq_status+"']").attr('selected','true')
 				// hien modal
 				$modal.modal("show");
 			}else{
