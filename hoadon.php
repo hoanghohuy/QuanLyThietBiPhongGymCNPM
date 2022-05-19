@@ -475,7 +475,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/hoadon_xoa.php">
+                    <form method="post" action="./controller/hoadon_in.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
                             <input readonly type="text" class="form-control" name="hd_id" required>
@@ -516,7 +516,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" data-dismiss="modal">In Hóa Đơn</button>
+                            <button type="submit" class="btn btn-success" name="InHoaDon">In Hóa Đơn</button>
                         </div>
                     </form>
                 </div>

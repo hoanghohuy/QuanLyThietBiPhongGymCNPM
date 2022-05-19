@@ -6,15 +6,18 @@
     if (isset($_POST["XoaNhanVien"])) {
         $u_id = $_POST["u_id"];
         $sqlxoa2 ="DELETE FROM account WHERE `id` = '$u_id'";
-        $result2 = $conn->query($sqlxoa2);
         $sqlxoa ="DELETE FROM staff WHERE `staff_id` = '$u_id'";
-        $result = $conn->query($sqlxoa);
         $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Xóa nhân viên')";
-        $result_log = $conn->query($SQL_WriteLog);
-        if($result == true && $result2== true && $result_log) {
-        header("Location: ../nhanvien.php");
-        }
-        else {
+        try {
+            //code...
+            $result2 = $conn->query($sqlxoa2);
+            $result = $conn->query($sqlxoa);
+            $result_log = $conn->query($SQL_WriteLog);
+            if($result == true && $result2== true && $result_log) {
+                header("Location: ../nhanvien.php");
+                }
+        } catch (Exception $ex) {
+            //throw $th;
             echo "Có lỗi xảy ra! Hãy thử lại sau!!!";
         }
     }

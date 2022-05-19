@@ -365,7 +365,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/themnhacungcap.php">
+                    <form method="post" action="./controller/nhacungcap_them.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã cung cấp:</label>
                             <input type="text" class="form-control" name="ncc_id" required>
@@ -407,7 +407,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/suanhacungcap.php">
+                    <form method="post" action="./controller/nhacungcap_sua.php">
                         <div class="form-group">
                             <label for="recipient-name" readonly class="col-form-label">Mã cung cấp:</label>
                             <input type="text" readonly class="form-control" name="ncc_id" required>
@@ -449,7 +449,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/xoanhacungcap.php">
+                    <form method="post" action="./controller/nhacungcap_xoa.php">
                         <div class="form-group">
                             <label for="recipient-name" readonly class="col-form-label">Mã cung cấp:</label>
                             <input type="text" readonly class="form-control" name="ncc_id" required>

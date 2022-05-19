@@ -356,7 +356,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/themthietbi.php">
+                    <form method="post" action="./controller/thietbi_them.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã thiết bị:</label>
                             <input type="text" class="form-control" name="eq_id" required>

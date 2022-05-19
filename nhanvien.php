@@ -349,7 +349,7 @@ session_start();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="./controller/themnhanvien.php">
+                            <form method="post" action="./controller/nhanvien_them.php">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Mã nhân viên:</label>
                                     <input type="text" class="form-control" name="u_id" required>
@@ -402,7 +402,7 @@ session_start();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="./controller/suanhanvien_controller.php">
+                            <form method="post" action="./controller/nhanvien_sua_controller.php">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Mã nhân viên:</label>
                                     <input readonly type="text" class="form-control" name="u_id" required>
@@ -461,7 +461,7 @@ session_start();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="./controller/xoanhanvien.php">
+                            <form method="POST" action="./controller/nhanvien_xoa.php">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Mã nhân viên:</label>
                                     <input type="text" class="form-control" name="u_id" required>

@@ -12,14 +12,20 @@
         $total = $_POST["total"];
         $hoadon_type = $_POST["hoadon_type"];
         $sql_ThemHD = "INSERT INTO hoadon (hoadon_id, staff_id, eq_id, ncc_id, soluong, ngaylaphoadon, total, hoadon_type) VALUES ('$hoadon_id', '1','$eq_id','$ncc_id','$soluong', '$ngaylaphoadon','$total','$hoadon_type')";
-        $result = $conn->query($sql_ThemHD);
+        
         $SQL_WriteLog = "INSERT INTO record (record_by,  record_action) VALUES ('$session_name', 'Nhập hóa đơn mới')";
-        $result_log = $conn->query($SQL_WriteLog);
-        if($result == true  && $result_log == true) {
-        header("Location: ../hoadon.php");
-        }
-        else {
-            echo "Có lỗi xảy ra.";
+        
+        try {
+            //code...
+            $result = $conn->query($sql_ThemHD);
+            $result_log = $conn->query($SQL_WriteLog);
+            if($result && $result_log) {
+                header("Location: ../hoadon.php");
+            }
+        } catch (Exception $ex) {
+            //throw $th;
+            echo "<h1>Mã hóa đơn đã tồn tại</h1>";
+            echo "<a href='../hoadon.php'><button>Quay lại</button></a>";
         }
     }
     mysqli_close($conn);   
