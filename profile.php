@@ -23,7 +23,7 @@ if(isset($_POST["SuaProfile"])) {
         require_once './connect/conn.php';
         $newpwd = $_POST["newpwd"];
         $renewpwd = $_POST["renewpwd"];
-        $sql = "UPDATE account SET `pwd`=  '$renewpwd' WHERE `USERNAME` = '$session_name'";
+        $sql = "UPDATE account SET `pwd`=  md5($renewpwd) WHERE `USERNAME` = '$session_name'";
         $result = $conn->query($sql);
         $SQL_WriteLog = "INSERT INTO record (record_by, record_date, record_action) VALUES ('$session_name', '$dateTimeNow','Đổi mật khẩu tài khoản $session_name')";
         $result_log = $conn->query($SQL_WriteLog);

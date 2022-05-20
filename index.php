@@ -19,7 +19,7 @@ if (isset($_POST["login"])) {
         $password = $_POST['password'];
 
         // cau query
-        $sql_login = "SELECT `username`, `pwd` FROM `account` WHERE `username` = '$username' and `pwd` = '$password' and `isActive` = '1'";
+        $sql_login = "SELECT `username`, `pwd` FROM `account` WHERE `username` = '$username' and `pwd` = md5($password) and `isActive` = '1'";
         $result = mysqli_query($conn, $sql_login);
         $row = mysqli_fetch_assoc($result);
         if ($row) {
