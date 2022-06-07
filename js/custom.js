@@ -169,6 +169,7 @@ $(document).ready(function(){
 				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh);
 				$modal.find("input[name=eq_dongia]").val(resp.data.eq_dongia);
 				$modal.find("option[value='"+resp.data.eq_status+"']").attr('selected','true')
+				$modal.find("img").attr("src", "./assets/thietbi/"+resp.data.eq_image+"")
 				// hien modal
 				$modal.modal("show");
 			}else{

@@ -2,6 +2,9 @@
 session_start();
 if (isset($_POST["login"])) {
     // khai bao mang chua loi.
+    $api_url     = 'https://www.google.com/recaptcha/api/siteverify';
+    $site_key    = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+    $secret_key  = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
     $error = [];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -11,6 +14,12 @@ if (isset($_POST["login"])) {
     // kiem tra da nhap vao password chua
     if (empty(trim($_POST['password']))) {
         $errors['password']['required'] = 'Mật khẩu không được bỏ trống!';
+    }
+
+    // kiem tra da xac minh captcha chua
+    $site_key_post = $_POST['g-recaptcha-response'];
+    if (empty($site_key_post)) {
+        $errors['recaptcha']['required'] = 'Vui lòng xác minh mã Captcha!';
     }
 
     if (empty($errors)) {
@@ -42,7 +51,7 @@ if (isset($_POST["login"])) {
     <meta name="author" content="">
 
     <title>Login Quản Lý Thiết Bị Gym</title>
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -94,6 +103,12 @@ if (isset($_POST["login"])) {
                                                 <label class="custom-control-label" for="customCheck">Ghi nhớ</label>
                                             </div>
                                         </div>
+                                        <div class="g-recaptcha" style="padding-bottom: 1rem; margin-left: 20px" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                                        <?php
+                                        if (!empty($errors['recaptcha']['required'])) {
+                                            echo "<span style='color: red; padding-bottom: 1rem; display: block; text-align: center'>" 
+                                            . $errors['recaptcha']['required'] . "</span>";
+                                        } ?>
                                         <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" name="login"></input>
                                         <br />
                                         <?php
@@ -101,13 +116,13 @@ if (isset($_POST["login"])) {
                                             echo "<p class='text-danger' style='font-size: 15px; text-align: center'>" . $errors['login']['required'] . "</p>";
                                         }
                                         ?>
-                                        <hr>
+                                        <!-- <hr>
                                         <a href="dashboard.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="dashboard.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        </a> -->
                                     </form>
                                     <hr>
                                     <div class="text-center">

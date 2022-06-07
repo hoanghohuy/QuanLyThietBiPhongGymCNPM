@@ -12,7 +12,42 @@
         $eq_ngaynhaphang = $_POST["eq_ngaynhaphang"];
         $eq_ngayhethanbaohanh = $_POST["eq_ngayhethanbaohanh"];
         $eq_dongia = $_POST["eq_dongia"];
-        $sql_ThemTB = "INSERT INTO equipment (eq_id, eq_name, group_id, ncc_id, eq_ngaynhaphang, eq_ngayhethanbaohanh, eq_dongia, eq_status) VALUES ('$eq_id', '$eq_name', '$group_id','$eq_ncc','$eq_ngaynhaphang', '$eq_ngayhethanbaohanh','$eq_dongia','Tốt')";
+        $eq_image = $_FILES['eq_image'];
+        $eq_imageName = $_FILES['eq_image']['name'];
+        $eq_imageTmpName = $_FILES['eq_image']['tmp_name'];
+        $eq_imageError = $_FILES['eq_image']['error'];
+        $eq_imageSize = $_FILES['eq_image']['size'];
+        $eq_imageExt = explode('.',$eq_imageName);
+        $eq_imageActualExt = strtolower(end($eq_imageExt));
+        $eq_imageAllowed = array('jpeg','jpg', 'png');
+        if (in_array($eq_imageActualExt, $eq_imageAllowed)) {
+            # code...
+            if ($eq_imageError === 0) {
+                # code...
+                if ($eq_imageSize < 500000) {
+                    # code...
+                    $eq_imageNameNew = uniqid('',true).".".$eq_imageActualExt;
+                    $eq_imageDestination = '../assets/thietbi/'.$eq_imageNameNew;
+                    echo $eq_imageNameNew;
+                    move_uploaded_file($eq_imageTmpName, $eq_imageDestination);
+                    echo "Upload thành công";
+                } else {
+                    # code...
+                    echo "Kích thước file quá lớn, vui lòng chọn file có dung lượng bé hơn 50MB";
+                }
+                
+            } else {
+                # code...
+                echo "Không thể upload ảnh!";
+            }
+            
+        } else {
+            # code...
+            echo "Vui lòng chọn loại file thích hợp!";
+        }
+        
+        print_r($eq_image);
+        $sql_ThemTB = "INSERT INTO equipment (eq_id, eq_name, group_id, ncc_id, eq_ngaynhaphang, eq_ngayhethanbaohanh, eq_dongia, eq_status, eq_image) VALUES ('$eq_id', '$eq_name', '$group_id','$eq_ncc','$eq_ngaynhaphang', '$eq_ngayhethanbaohanh','$eq_dongia','Tốt', '$eq_imageNameNew')";
         
         $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Thêm thiết bị')";
         

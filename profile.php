@@ -288,6 +288,16 @@ if(isset($_POST["SuaProfile"])) {
         }
     ?>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Upload Image:</label>
+                            <br>
+                            <input type="file" name="user_image">
+                            <?php 
+      if(!empty($errors['renewpwd']['required'])) {
+      echo "<span style='color: red;'>".$errors['renewpwd']['required']."</span>";
+        }
+    ?>
+                        </div>
                         <button type="submit" class="btn btn-primary" name="SuaProfile">Lưu</button>
                         <?php 
       if(!empty($errors['edit']['required'])) {

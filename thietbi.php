@@ -245,6 +245,7 @@
                                     <thead>
                                         <tr>
                                             <th>Mã TB</th>
+                                            <th>Hình</th>
                                             <th>Tên Thiết Bị</th>
                                             <th>Nhóm thiết bị</th>
                                             <th>Nhà Cung Cấp</th>
@@ -259,6 +260,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Mã TB</th>
+                                            <th>Hình</th>
                                             <th>Tên Thiết Bị</th>
                                             <th>Nhóm thiết bị</th>
                                             <th>Nhà Cung Cấp</th>
@@ -274,13 +276,16 @@
 
                                     <?php
                                         require_once './connect/conn.php';
-                                        $sql_eq = "SELECT e.eq_id, e.eq_name, g.group_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status FROM equipment as e, nhacungcap as n, equipment_group as g WHERE e.ncc_id = n.ncc_id AND e.group_id = g.group_id";
+                                        $sql_eq = "SELECT e.eq_id, e.eq_name, g.group_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status, e.eq_image FROM equipment as e, nhacungcap as n, equipment_group as g WHERE e.ncc_id = n.ncc_id AND e.group_id = g.group_id";
                                         $result = $conn->query($sql_eq);
                                         ?>
                                        <?php if($result->num_rows > 0) 
                                             while ($row = $result->fetch_assoc()): ?>
                                             <tr>
                                             <td><?= $row['eq_id'] ?></td>
+                                            <td>
+                                            <img style="width: 55px; height: auto;" src="./assets/thietbi/<?=$row['eq_image']?>">
+                                            </td>
                                             <td><?= $row['eq_name'] ?></td>
                                             <td><?= $row['group_name'] ?></td>
                                             <td><?= $row['ncc_name'] ?></td>
@@ -356,7 +361,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/thietbi_them.php">
+                    <form method="post" action="./controller/thietbi_them.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã thiết bị:</label>
                             <input type="text" class="form-control" name="eq_id" required>
@@ -416,6 +421,10 @@
                             <label for="recipient-name" class="col-form-label">Đơn giá:</label>
                             <input type="text" class="form-control" name="eq_dongia" required placeholder="đ">
                         </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Hình ảnh Sản phẩm:</label>
+                            <input type="file" name="eq_image">
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" name="ThemThietBi">Thêm</button>
@@ -437,7 +446,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="./controller/thietbi_sua.php">
+                    <form method="post" action="./controller/thietbi_sua.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã thiết bị:</label>
                             <input readonly type="text" class="form-control" name="eq_id" required>
@@ -505,6 +514,10 @@
                         <option value="Hư hỏng">Hư hỏng</option>
                         </select>
                         </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Hình ảnh Sản phẩm:</label>
+                            <input type="file" name="eq_image">
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" name="SuaThietBi">Sửa</button>
@@ -527,6 +540,9 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" action="./controller/themnhacungcap.php">
+                        <div class="form-group">
+                        <img style="width:100%; height: auto;" />
+                        </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã thiết bị:</label>
                             <input readonly type="text" class="form-control" name="eq_id" required>

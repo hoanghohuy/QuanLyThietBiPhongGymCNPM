@@ -397,7 +397,7 @@
     </div>
 
     <!-- Sửa nha cung cap Modal -->
-    <div class="modal fade" id="SuaNCC" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade"  id="SuaNCC" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -408,6 +408,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" action="./controller/nhacungcap_sua.php">
+                    <!-- <form enctype="multipart/form-data" method="POST" action="./controller/test_file.php"> -->
                         <div class="form-group">
                             <label for="recipient-name" readonly class="col-form-label">Mã cung cấp:</label>
                             <input type="text" readonly class="form-control" name="ncc_id" required>
@@ -427,6 +428,10 @@
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ghi chú:</label>
                             <input class="form-control" name="ncc_note"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Hình ảnh:</label>
+                            <input type="file" id="fileupload" name="fileupload"></input>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
