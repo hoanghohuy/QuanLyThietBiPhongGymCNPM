@@ -194,7 +194,12 @@ if(!isset($_SESSION['username']) || !$_SESSION['username']) {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 large"><?php echo $_SESSION["username"] ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 large">
+                                    <?php
+                                require_once './function/SQL.php';
+                                echo GET_NAME_BY_SESSION($_SESSION["username"]); 
+                                ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -248,7 +253,7 @@ if(!isset($_SESSION['username']) || !$_SESSION['username']) {
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Tổng Thiết bị</div>
                                             <?php
-                                            require_once './connect/conn.php';
+                                            require './connect/conn.php';
                                             $sql_user = "SELECT COUNT(eq_id) FROM `equipment`";
                                             $result = $conn->query($sql_user);
                                             if($result->num_rows > 0) {

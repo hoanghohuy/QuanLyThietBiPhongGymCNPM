@@ -1,3 +1,15 @@
+<?php
+require_once './connect/conn.php';
+session_start();
+require './function/SQL.php';
+require './connect/conn.php';
+$session_name = $_SESSION['username'];
+$GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
+$result_GET_USER_BY_ID = $conn->query($GET_USER_BY_ID);
+$row = $result_GET_USER_BY_ID->fetch_assoc();
+$hoadon_UserID = $row["id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,7 +193,11 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">NHÓM 17</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                <?php
+                                echo GET_NAME_BY_SESSION($_SESSION["username"]); 
+                                ?>
+                                </span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -217,6 +233,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">THỐNG KÊ HÓA ĐƠN</h1>
                     <p class="mb-4">Trang quản lý tất cả hóa đơn liên quan thiết bị phòng Gym</p>
+                    <p style="color: red" class="mb-4">Lưu ý: Nhân viên chỉ được xem các hóa đơn do mình tạo ra.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -254,19 +271,28 @@
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        require_once './connect/conn.php';
-                                        $Sql_Hoadon = "SELECT h.hoadon_id, s.last_name, h.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
-                                        FROM hoadon as h, nhacungcap as n, staff as s
-                                        WHERE h.staff_id = s.staff_id AND h.ncc_id = n.ncc_id";
+                                        if($session_name == 'admin') {
+                                            $Sql_Hoadon = "SELECT * FROM `hoadon`";
+                                        }
+                                        else {
+                                        $Sql_Hoadon ="SELECT * FROM `hoadon` WHERE staff_id = '$hoadon_UserID'";
+                                        }
                                         $result = $conn->query($Sql_Hoadon);
                                         ?>
                                         <?php if ($result->num_rows > 0)
                                             while ($row = $result->fetch_assoc()) : ?>
                                             <tr>
                                                 <td><?= $row['hoadon_id'] ?></td>
-                                                <td><?= $row['last_name'] ?></td>
+                                                <td><?= $row['hoadon_CreactedBy'] ?></td>
                                                 <td><?= $row['eq_name'] ?></td>
-                                                <td><?= $row['ncc_name'] ?></td>
+                                                <td><?php
+                                                $ncc_id = $row['ncc_id'];
+                                                $GET_NCC_NAME_BY_NCC_ID = "SELECT ncc_name FROM nhacungcap WHERE ncc_id ='$ncc_id'";
+                                                $result_GET_NCC_NAME_BY_NCC_ID = $conn->query($GET_NCC_NAME_BY_NCC_ID);
+                                                $row2 = $result_GET_NCC_NAME_BY_NCC_ID->fetch_assoc();
+                                                echo $row2["ncc_name"]
+                                                 
+                                                ?></td>
                                                 <td><?= $row['ngaylaphoadon'] ?></td>
                                                 <td><?= $row['soluong'] ?></td>
                                                 <td><?= $row['total'] ?></td>
@@ -329,19 +355,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>
-                            <select class="form-control" name="eq_id">
-                                <?php
-                                $sql = "SELECT eq_id, eq_name from equipment";
-                                $result = $conn->query($sql);
-
-                                if ($result->num_rows > 0) {
-                                    // Load dữ liệu lên website
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<option value='" . $row["eq_id"] . "'>" . $row["eq_name"] . "</option>";
-                                    }
-                                }
-                                ?>
-                            </select>
+                            <input type="text" class="form-control" name="hd_eq_name" required>
                         </div>
                         <!-- // nha cung cap -->
                         <div class="form-group">
@@ -410,7 +424,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Người lập hóa đơn:</label>
-                            <input type="text" class="form-control" name="hd_by" required>
+                            <input type="text" class="form-control" name="hd_by" readonly>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>

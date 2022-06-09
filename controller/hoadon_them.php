@@ -3,15 +3,20 @@
     $session_name = $_SESSION['username'];
     $dateTimeNow = Date("d/m/Y H:i:s");
     require '../connect/conn.php';
+    $GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
+    $result_GET_USER_BY_ID = $conn->query($GET_USER_BY_ID);
+    $row = $result_GET_USER_BY_ID->fetch_assoc();
+    $hoadon_CreatedBy = $row["account_name"];
+    $hoadon_SessionID = $row["id"];
     if(isset($_POST["AddHoaDon"])) {
         $hoadon_id = $_POST["hoadon_id"];
-        $eq_id = $_POST["eq_id"];
         $ncc_id = $_POST["ncc_id"];
+        $eq_name = $_POST["hd_eq_name"];
         $soluong = $_POST["soluong"];
         $ngaylaphoadon = $_POST["ngaylaphoadon"];
         $total = $_POST["total"];
         $hoadon_type = $_POST["hoadon_type"];
-        $sql_ThemHD = "INSERT INTO hoadon (hoadon_id, staff_id, eq_id, ncc_id, soluong, ngaylaphoadon, total, hoadon_type) VALUES ('$hoadon_id', '1','$eq_id','$ncc_id','$soluong', '$ngaylaphoadon','$total','$hoadon_type')";
+        $sql_ThemHD = "INSERT INTO hoadon (hoadon_id, staff_id, eq_name, ncc_id, soluong, ngaylaphoadon, total, hoadon_type, hoadon_CreactedBy) VALUES ('$hoadon_id', '$hoadon_SessionID', '$eq_name', '$ncc_id','$soluong', '$ngaylaphoadon','$total','$hoadon_type', '$hoadon_CreatedBy')";
         
         $SQL_WriteLog = "INSERT INTO record (record_by,  record_action) VALUES ('$session_name', 'Nhập hóa đơn mới')";
         
@@ -24,7 +29,7 @@
             }
         } catch (Exception $ex) {
             //throw $th;
-            echo "<h1>Mã hóa đơn đã tồn tại</h1>";
+            echo $ex->getMessage();
             echo "<a href='../hoadon.php'><button>Quay lại</button></a>";
         }
     }

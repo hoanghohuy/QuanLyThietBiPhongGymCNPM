@@ -249,7 +249,7 @@ $(document).ready(function(){
 			if(resp.result){
 				// fill data lay tu api
 				$modal.find("input[name=hd_id]").val(resp.data.hoadon_id);
-				$modal.find("input[name=hd_by]").val(resp.data.last_name);
+				$modal.find("input[name=hd_by]").val(resp.data.hoadon_CreactedBy);
 				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
 				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
@@ -284,7 +284,7 @@ $(document).ready(function(){
 			if(resp.result){
 				// fill data lay tu api
 				$modal.find("input[name=hd_id]").val(resp.data.hoadon_id);
-				$modal.find("input[name=hd_by]").val(resp.data.last_name);
+				$modal.find("input[name=hd_by]").val(resp.data.hoadon_CreactedBy);
 				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
 				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);

@@ -3,6 +3,11 @@
    $session_name = $_SESSION['username'];
    $dateTimeNow = Date("d/m/Y H:i:s"); 
    require '../connect/conn.php';
+   $GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
+    $result_GET_USER_BY_ID = $conn->query($GET_USER_BY_ID);
+    $row = $result_GET_USER_BY_ID->fetch_assoc();
+    $hoadon_CreatedBy = $row["account_name"];
+    $hoadon_SessionID = $row["id"];
    if(isset($_POST["SuaHoaDon"])) {
         $hoadon_id = $_POST["hd_id"];
         $hd_by = $_POST["hd_by"];
@@ -12,7 +17,7 @@
         $ngaylaphoadon = $_POST["hd_createDate"];
         $total = $_POST["hd_total"];
         $hoadon_type = $_POST["hd_type"];
-       $SQL_SuaHD = "UPDATE hoadon SET staff_id = '1', eq_name = '$eq_name', `ncc_id` = '$ncc_id', `soluong`='$soluong', `ngaylaphoadon`='$ngaylaphoadon', `total` = '$total', `hoadon_type`='$hoadon_type' WHERE `hoadon_id` = '$hoadon_id'";
+       $SQL_SuaHD = "UPDATE hoadon SET eq_name = '$eq_name', `ncc_id` = '$ncc_id', `soluong`='$soluong', `ngaylaphoadon`='$ngaylaphoadon', `total` = '$total', `hoadon_type`='$hoadon_type' WHERE `hoadon_id` = '$hoadon_id'";
        
        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Sửa thông tin hóa đơn')";
        
@@ -31,4 +36,3 @@
    else {
        echo "K có gì cả!!! đòi hack hay gì";
    }
-?>

@@ -10,7 +10,7 @@ if(!isset($id) || !is_numeric($id) || intval($id) < 1){
 	));
 	exit();
 }
-$Sql_Sel_Hoadon = "SELECT h.hoadon_id, s.last_name, h.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
+$Sql_Sel_Hoadon = "SELECT h.hoadon_id, h.hoadon_CreactedBy, h.eq_name, n.ncc_name, h.ngaylaphoadon, h.soluong, h.total, h.hoadon_type 
 FROM hoadon as h, nhacungcap as n, staff as s, equipment as e 
 WHERE h.staff_id = s.staff_id AND h.ncc_id = n.ncc_id AND h.hoadon_id = '$id'";
 $result = $conn->query($Sql_Sel_Hoadon);
