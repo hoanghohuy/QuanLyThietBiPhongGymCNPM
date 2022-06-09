@@ -90,6 +90,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_dob]").val(resp.data.dob);
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
+				$modal.find("input[name=u_salary]").val(resp.data.staff_salary);
 				$modal.find("input[name=u_role]").val(resp.data.role);
 				$modal.find("option[value='"+resp.data.role+"']").attr('selected','true')
 				// $modal.find("input[name=u_isActive]").val(resp.data.isActive);
@@ -129,6 +130,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_dob]").val(resp.data.dob);
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
+				$modal.find("input[name=u_salary]").val(resp.data.staff_salary);
 				$modal.find("input[name=u_role]").val(resp.data.role);
 				$modal.find("option[value='"+resp.data.role+"']").attr('selected','true')
 				// hien modal

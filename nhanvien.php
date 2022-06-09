@@ -245,7 +245,7 @@ require './connect/conn.php';
                                                 <th>Tên</th>
                                                 <th>Ngày sinh</th>
                                                 <th>username</th>
-                                                <!-- <th>password</th> -->
+                                                <th>Lương</th>
                                                 <th>Chức vụ</th>
                                                 <th>Trạng thái</th>
                                                 <th>Hành động</th>
@@ -258,7 +258,7 @@ require './connect/conn.php';
                                                 <th>Tên</th>
                                                 <th>Ngày sinh</th>
                                                 <th>username</th>
-                                                <!-- <th>password</th> -->
+                                                <th>Lương</th>
                                                 <th>Chức vụ</th>
                                                 <th>Trạng thái</th>
                                                 <th>Hành động</th>
@@ -267,7 +267,7 @@ require './connect/conn.php';
                                         <tbody>
                                             <?php
                                             require_once './connect/conn.php';
-                                            $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
+                                            $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username,staff.staff_salary, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
                                             $result = $conn->query($sql_user)
                                             ?>
                                             <?php if ($result->num_rows > 0)
@@ -279,6 +279,7 @@ require './connect/conn.php';
                                                     <td><?= $row["last_name"] ?></td>
                                                     <td><?= $row["dob"] ?></td>
                                                     <td><?= $row["username"] ?></td>
+                                                    <td><?= $row["staff_salary"] ?>đ</td>
                                                     <td><?= ($row["role"] == 0 ? "Admin" : "Nhân viên") ?></td>
                                                     <td class="<?= ($row["isActive"] == 1 ? "btn-success" : "btn-warning") ?>"><?= ($row["isActive"] == 1 ? "Hoạt động" : "Bị Khóa") ?></td>
                                                     <td>
@@ -382,6 +383,10 @@ require './connect/conn.php';
                                     <input type="text" class="form-control" name="u_pwd" required>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-form-label">Lương:</label>
+                                    <input type="text" class="form-control" name="u_salary" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Chức vụ:</label>
                                     <select class="form-control" name="u_role">
                                         <option value="1" selected>Nhân viên</option>
@@ -433,6 +438,10 @@ require './connect/conn.php';
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Password:</label>
                                     <input type="text" class="form-control" name="u_pwd" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Lương:</label>
+                                    <input type="text" class="form-control" name="u_salary" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Chức vụ:</label>
@@ -488,6 +497,10 @@ require './connect/conn.php';
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Username:</label>
                                     <input type="text" class="form-control" name="u_user" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Lương:</label>
+                                    <input type="text" class="form-control" name="u_salary" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Chức vụ:</label>
