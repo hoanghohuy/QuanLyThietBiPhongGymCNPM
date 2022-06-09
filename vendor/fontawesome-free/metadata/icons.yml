@@ -16553,7 +16553,7 @@ sign-out-alt:
       - exit
       - leave
       - log out
-      - logout
+      - Đăng xuất
       - sign-out
   styles:
     - solid
