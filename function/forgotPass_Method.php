@@ -12,14 +12,15 @@ require "./PHPMailer-master/src/PHPMailer.php";
         $mail->Host = 'smtp.gmail.com';  //SMTP servers
         $mail->SMTPAuth = true; // Enable authentication
         $mail->Username = 'webbanxemay.hoangtuannga@gmail.com'; // SMTP username
-        $mail->Password = 'hoangtuannga';   // SMTP password
+        $mail->Password = 'rhkbtqpsuuscdngo';   // SMTP password
         $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
         $mail->Port = 465;  // port to connect to                
-        $mail->setFrom('webbanxemay.hoangtuannga@gmail.com', 'QuanLyNhanVien' ); 
+        $mail->setFrom('webbanxemay.hoangtuannga@gmail.com', 'ThietBiGym.Net' ); 
         $mail->addAddress($email); 
         $mail->isHTML(true);  // Set email format to HTML
-        $mail->Subject = 'YÊU CẦU GỬI LẠI MẬT KHẨU QUẢN LÝ NHÂN VIÊN';
-        $noidungthu = "<p>Khi bạn nhận đc thư này, đồng nghĩa bạn hay ai đó đã yêu cầu cấp lại mật khẩu từ QuanLyNhanVien</p>
+        $mail->Subject = 'YÊU CẦU GỬI LẠI MẬT KHẨU';
+        $noidungthu = "<p>Khi bạn nhận đc thư này, đồng nghĩa bạn hay ai đó đã yêu cầu cấp lại mật khẩu từ ThietBiGym.Net</p>
+        <p>Tuyệt đối không cung cấp mật khẩu cho bất kì ai</p>
         Mật khẩu mới của bạn là: {$matkhau}";
         $mail->Body = $noidungthu;
         $mail->smtpConnect( array(
