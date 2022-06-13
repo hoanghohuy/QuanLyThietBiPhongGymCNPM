@@ -1,6 +1,11 @@
 <?php
 session_start();
+if(!isset($_SESSION['username']) || !$_SESSION['username']) {
+    header("Location: index.php");
+    exit();
+}
 require './function/SQL.php';
+$USER = GET_NAME_BY_SESSION($_SESSION["username"]);
 require './connect/conn.php';
 ?>
 
@@ -15,7 +20,7 @@ require './connect/conn.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hóa Đơn - Quản Lý Thiết Bị Phòng Gym</title>
+    <title>Hoạt Động - Quản Lý Thiết Bị Phòng Gym</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -244,7 +249,7 @@ require './connect/conn.php';
                                         <thead>
                                             <tr>
                                                 <th>Mã Log</th>
-                                                <th>Tên tài khoản</th>
+                                                <th>Người thực hiện</th>
                                                 <th>Thời gian</th>
                                                 <th>Hành động</th>
                                             </tr>
@@ -252,7 +257,7 @@ require './connect/conn.php';
                                         <tfoot>
                                             <tr>
                                                 <th>Mã Log</th>
-                                                <th>Tên tài khoản</th>
+                                                <th>Người thực hiện</th>
                                                 <th>Thời gian</th>
                                                 <th>Hành động</th>
                                             </tr>

@@ -1,6 +1,10 @@
 <?php
-require_once './connect/conn.php';
 session_start();
+if(!isset($_SESSION['username']) || !$_SESSION['username']) {
+    header("Location: index.php");
+    exit();
+}
+require_once './connect/conn.php';
 require './function/SQL.php';
 require './connect/conn.php';
 $session_name = $_SESSION['username'];
@@ -251,6 +255,7 @@ $hoadon_UserID = $row["id"];
                                             <th>Nhà cung cấp</th>
                                             <th>Ngày lập phiếu</th>
                                             <th>Số lượng</th>
+                                            <th>Đơn giá</th>
                                             <th>Thành tiền</th>
                                             <th>Loại hóa đơn</th>
                                             <th>Hành động</th>
@@ -264,6 +269,7 @@ $hoadon_UserID = $row["id"];
                                             <th>Nhà cung cấp</th>
                                             <th>Ngày lập phiếu</th>
                                             <th>Số lượng</th>
+                                            <th>Đơn giá</th>
                                             <th>Thành tiền</th>
                                             <th>Loại hóa đơn</th>
                                             <th>Hành động</th>
@@ -295,6 +301,7 @@ $hoadon_UserID = $row["id"];
                                                 ?></td>
                                                 <td><?= $row['ngaylaphoadon'] ?></td>
                                                 <td><?= $row['soluong'] ?></td>
+                                                <td><?= $row['hoadon_dongia'] ?></td>
                                                 <td><?= $row['total'] ?></td>
                                                 <td><?= $row['hoadon_type'] ?></td>
                                                 <td>
@@ -376,16 +383,21 @@ $hoadon_UserID = $row["id"];
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
-                            <input type="text" class="form-control" name="soluong" required>
+                            <input value="" 
+                            onchange="onChangeQuantity(this.value)" type="text" class="form-control" name="soluong" id="soluong" required>
                         </div>
-
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input value="" 
+                            onchange="onChangeUnit(this.value)" type="text" class="form-control" name="hd_unit" id="unit" required>
+                        </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập hóa đơn:</label>
                             <input type="text" class="form-control" name="ngaylaphoadon" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
-                            <input readonly type="text" class="form-control" name="total" required placeholder="đ">
+                            <input type="text" class="form-control" readonly name="total" required placeholder="đ">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
@@ -449,7 +461,15 @@ $hoadon_UserID = $row["id"];
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
-                            <input type="text" class="form-control" name="hd_quantity" required>
+                            <input type="text" class="form-control" name="hd_quantity" required
+                            onchange="onChangeEditQuantity(this.value)" id="edit_quantity"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input type="text" class="form-control" name="hd_unit" required
+                            onchange="onChangeEditUnit(this.value)" id="edit_unit"
+                            >
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập:</label>
@@ -457,7 +477,7 @@ $hoadon_UserID = $row["id"];
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
-                            <input type="text" class="form-control" name="hd_total" required placeholder="đ">
+                            <input type="text" readonly class="form-control" name="hd_total" required placeholder="đ">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Loại hóa đơn:</label>
@@ -510,6 +530,10 @@ $hoadon_UserID = $row["id"];
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Số lượng:</label>
                             <input readonly type="text" class="form-control" name="hd_quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input readonly type="text" class="form-control" name="hd_unit" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập:</label>
@@ -584,6 +608,10 @@ $hoadon_UserID = $row["id"];
                             <input readonly type="text" class="form-control" name="hd_quantity" required>
                         </div>
                         <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
+                            <input readonly type="text" class="form-control" name="hd_unit" required>
+                        </div>
+                        <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập:</label>
                             <input readonly type="text" class="form-control" name="hd_createDate" required>
                         </div>
@@ -630,6 +658,51 @@ $hoadon_UserID = $row["id"];
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script>
+        onChangeQuantity = (e) => {
+            $this = $(this);
+		    $modal = $("#AddHoaDon");
+            const quantity = e;
+            const unit = document.getElementById("unit").value
+            $modal.find("input[name=soluong]").val(quantity);
+            console.log("quantity>>>",quantity);
+            $modal.find("input[name=total]").val(quantity * unit);
+        }
+
+        onChangeEditQuantity = (e) => {
+            $this = $(this);
+		    $modal = $("#EditHoaDon");
+            const quantity_edit = e;
+            const unit_edit = document.getElementById("edit_unit").value
+            $modal.find("input[name=soluong]").val(quantity_edit);
+            console.log("quantity>>>",quantity_edit);
+            $modal.find("input[name=hd_total]").val(quantity_edit * unit_edit);
+        }
+
+        onChangeUnit = (e) => {
+            const unit = e;
+            console.log("Unit>>>", e)
+            $this = $(this);
+		    $modal = $("#AddHoaDon");
+            
+            const quantity = document.getElementById("soluong").value
+            console.log("quantity>>>>",quantity)
+
+            $modal.find("input[name=total]").val(quantity * unit);
+        }
+
+        onChangeEditUnit = (e) => {
+            const unit_edit = e;
+            console.log("Unit>>>", e)
+            $this = $(this);
+		    $modal = $("#EditHoaDon");
+            
+            const quantity_edit = document.getElementById("edit_quantity").value
+            console.log("quantity>>>>",quantity_edit)
+
+            $modal.find("input[name=hd_total]").val(quantity_edit * unit_edit);
+        }
+    </script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

@@ -3,6 +3,11 @@
     $session_name = $_SESSION['username'];
     $dateTimeNow = Date("d/m/Y H:i:s");
     require '../connect/conn.php';
+    $GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
+    $result_GET_USER_BY_ID = $conn->query($GET_USER_BY_ID);
+    $row = $result_GET_USER_BY_ID->fetch_assoc();
+    $eq_CreatedBy = $row["account_name"];
+    $hoadon_SessionID = $row["id"];
     if(isset($_POST["ThemThietBi"])) {
         $eq_id = $_POST["eq_id"];
         $eq_name = $_POST["eq_name"];
@@ -49,7 +54,7 @@
         print_r($eq_image);
         $sql_ThemTB = "INSERT INTO equipment (eq_id, eq_name, group_id, ncc_id, eq_ngaynhaphang, eq_ngayhethanbaohanh, eq_dongia, eq_status, eq_image) VALUES ('$eq_id', '$eq_name', '$group_id','$eq_ncc','$eq_ngaynhaphang', '$eq_ngayhethanbaohanh','$eq_dongia','Tốt', '$eq_imageNameNew')";
         
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Thêm thiết bị')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$eq_CreatedBy', 'Thêm thiết bị')";
         
         try {
             //code...

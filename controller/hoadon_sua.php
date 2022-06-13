@@ -14,12 +14,13 @@
         $eq_name = $_POST["hd_eq_name"];
         $ncc_id = $_POST["hd_eq_ncc"];
         $soluong = $_POST["hd_quantity"];
+        $dongia = $_POST["hd_unit"];
         $ngaylaphoadon = $_POST["hd_createDate"];
         $total = $_POST["hd_total"];
         $hoadon_type = $_POST["hd_type"];
        $SQL_SuaHD = "UPDATE hoadon SET eq_name = '$eq_name', `ncc_id` = '$ncc_id', `soluong`='$soluong', `ngaylaphoadon`='$ngaylaphoadon', `total` = '$total', `hoadon_type`='$hoadon_type' WHERE `hoadon_id` = '$hoadon_id'";
        
-       $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Sửa thông tin hóa đơn')";
+       $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$hoadon_CreatedBy', 'Sửa thông tin hóa đơn')";
        
        try {
            //code...

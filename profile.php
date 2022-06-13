@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['username']) || !$_SESSION['username']) {
+    header("Location: index.php");
+    exit();
+}
 $session_name = $_SESSION['username'];
 $dateTimeNow = Date("d/m/Y H:i:s");
 if(!isset($_SESSION['username']) || !$_SESSION['username']) {

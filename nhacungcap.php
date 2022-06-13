@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['username']) || !$_SESSION['username']) {
+    header("Location: index.php");
+    exit();
+}
 require './function/SQL.php';
 require './connect/conn.php';
 ?>
@@ -437,10 +441,6 @@ require './connect/conn.php';
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ghi chú:</label>
                             <input class="form-control" name="ncc_note"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Hình ảnh:</label>
-                            <input type="file" id="fileupload" name="fileupload"></input>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

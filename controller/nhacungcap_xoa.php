@@ -3,10 +3,15 @@
     $session_name = $_SESSION['username'];
     $dateTimeNow = Date("d/m/Y H:i:s");
     require '../connect/conn.php';
+    $GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
+    $result_GET_USER_BY_ID = $conn->query($GET_USER_BY_ID);
+    $row = $result_GET_USER_BY_ID->fetch_assoc();
+    $ncc_CreatedBy = $row["account_name"];
+    $hoadon_SessionID = $row["id"];
     if (isset($_POST["XoaNhaCungCap"])) {
         $ncc_id = $_POST["ncc_id"];
         $sqlxoa ="DELETE FROM nhacungcap WHERE `ncc_id` = '$ncc_id'";
-        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Xóa nhà cung cấp')";
+        $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$ncc_CreatedBy', 'Xóa nhà cung cấp')";
         
         try {
             //code...

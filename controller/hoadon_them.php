@@ -13,12 +13,13 @@
         $ncc_id = $_POST["ncc_id"];
         $eq_name = $_POST["hd_eq_name"];
         $soluong = $_POST["soluong"];
+        $dongia = $_POST["hd_unit"];
         $ngaylaphoadon = $_POST["ngaylaphoadon"];
         $total = $_POST["total"];
         $hoadon_type = $_POST["hoadon_type"];
-        $sql_ThemHD = "INSERT INTO hoadon (hoadon_id, staff_id, eq_name, ncc_id, soluong, ngaylaphoadon, total, hoadon_type, hoadon_CreactedBy) VALUES ('$hoadon_id', '$hoadon_SessionID', '$eq_name', '$ncc_id','$soluong', '$ngaylaphoadon','$total','$hoadon_type', '$hoadon_CreatedBy')";
+        $sql_ThemHD = "INSERT INTO hoadon (hoadon_id, staff_id, eq_name, ncc_id, soluong, hoadon_dongia, ngaylaphoadon, total, hoadon_type, hoadon_CreactedBy) VALUES ('$hoadon_id', '$hoadon_SessionID', '$eq_name', '$ncc_id','$soluong', '$dongia','$ngaylaphoadon','$total','$hoadon_type', '$hoadon_CreatedBy')";
         
-        $SQL_WriteLog = "INSERT INTO record (record_by,  record_action) VALUES ('$session_name', 'Nhập hóa đơn mới')";
+        $SQL_WriteLog = "INSERT INTO record (record_by,  record_action) VALUES ('$hoadon_CreatedBy', 'Nhập hóa đơn mới')";
         
         try {
             //code...
