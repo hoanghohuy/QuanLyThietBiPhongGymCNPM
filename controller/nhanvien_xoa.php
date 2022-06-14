@@ -18,7 +18,10 @@
                 }
         } catch (Exception $ex) {
             //throw $th;
-            echo "Có lỗi xảy ra! Hãy thử lại sau!!!";
+            echo $ex ->getMessage();
+
+            echo "<h2>Không thể xóa nhân viên đã lập hóa đơn</h2>";
+            echo "<button><a href='../nhanvien.php'>Quay lại</a></button>";
         }
     }
  ?>

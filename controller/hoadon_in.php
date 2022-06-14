@@ -1,4 +1,7 @@
 <?php
+header('Content-Type: charset=utf-8');
+use Sabberworm\CSS\Property\Charset;
+
 session_start();
 if(isset($_POST["InHoaDon"])) {
 	$signature = $_SESSION["username"];

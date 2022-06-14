@@ -155,7 +155,7 @@ if(isset($_POST["SuaProfile"])) {
 
             <!-- Nav Item - Hóa đơn -->
             <li class="nav-item">
-                <a class="nav-link" href="hoadon.html">
+                <a class="nav-link" href="hoadon.php">
                     <i class="fas fa-file-invoice"></i>
                     <span>HÓA ĐƠN</span></a>
             </li>

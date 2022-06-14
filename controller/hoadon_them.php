@@ -31,6 +31,7 @@
         } catch (Exception $ex) {
             //throw $th;
             echo $ex->getMessage();
+            echo "<h2>Không được thêm mã hóa đơn đã có </h2>";
             echo "<a href='../hoadon.php'><button>Quay lại</button></a>";
         }
     }
