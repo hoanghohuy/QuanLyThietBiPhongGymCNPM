@@ -7,13 +7,15 @@
         $u_id = $_POST["u_id"];
         $u_fn = $_POST["u_fn"];
         $u_ln = $_POST["u_ln"];
+        $account_name = $u_fn . " ". $u_ln;
         $u_dob = $_POST["u_dob"];
+        $u_email = $_POST["u_email"];
         $u_user = $_POST["u_user"];
         $u_pwd = $_POST["u_pwd"];
         $u_salary = $_POST["u_salary"];
         $u_role = $_POST["u_role"];
         $sql_ThemNv2 = "INSERT INTO staff (staff_id, first_name, last_name, dob, staff_salary) VALUES ('$u_id', '$u_fn', '$u_ln', '$u_dob', '$u_salary')";
-        $sql_ThemNv = "INSERT INTO account (id, username, pwd, `role`, isActive) VALUES ('$u_id','$u_user', '$u_pwd', '$u_role', '1')";
+        $sql_ThemNv = "INSERT INTO account (id, username, account_name, pwd, `role`, isActive, email) VALUES ('$u_id','$u_user', '$account_name','$u_pwd', '$u_role', '1', '$u_email')";
         $SQL_WriteLog = "INSERT INTO record (record_by, record_action) VALUES ('$session_name', 'Thêm nhân viên mới')";
         
         try {

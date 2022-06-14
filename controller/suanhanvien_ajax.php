@@ -10,7 +10,7 @@ if(!isset($id) || !is_numeric($id) || intval($id) < 1){
 	));
 	exit();
 }
-$sql_sel_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username, account.pwd, staff.staff_salary, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id AND id ='$id'";
+$sql_sel_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.email, account.username, account.pwd, staff.staff_salary, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id AND id ='$id'";
 $result = $conn->query($sql_sel_user);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

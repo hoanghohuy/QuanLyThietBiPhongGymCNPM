@@ -88,6 +88,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_fn]").val(resp.data.first_name);
 				$modal.find("input[name=u_ln]").val(resp.data.last_name);
 				$modal.find("input[name=u_dob]").val(resp.data.dob);
+				$modal.find("input[name=u_email]").val(resp.data.email);
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
 				$modal.find("input[name=u_salary]").val(resp.data.staff_salary);

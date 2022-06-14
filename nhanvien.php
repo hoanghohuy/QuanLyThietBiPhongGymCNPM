@@ -248,6 +248,7 @@ require './connect/conn.php';
                                                 <th>Họ</th>
                                                 <th>Tên</th>
                                                 <th>Ngày sinh</th>
+                                                <th>Email</th>
                                                 <th>username</th>
                                                 <th>Lương</th>
                                                 <th>Chức vụ</th>
@@ -261,6 +262,7 @@ require './connect/conn.php';
                                                 <th>Họ</th>
                                                 <th>Tên</th>
                                                 <th>Ngày sinh</th>
+                                                <th>Email</th>
                                                 <th>username</th>
                                                 <th>Lương</th>
                                                 <th>Chức vụ</th>
@@ -271,7 +273,7 @@ require './connect/conn.php';
                                         <tbody>
                                             <?php
                                             require_once './connect/conn.php';
-                                            $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.username,staff.staff_salary, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
+                                            $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.email, account.username,staff.staff_salary, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
                                             $result = $conn->query($sql_user)
                                             ?>
                                             <?php if ($result->num_rows > 0)
@@ -282,6 +284,7 @@ require './connect/conn.php';
                                                     <td><?= $row["first_name"] ?></td>
                                                     <td><?= $row["last_name"] ?></td>
                                                     <td><?= $row["dob"] ?></td>
+                                                    <td><?= $row["email"] ?></td>
                                                     <td><?= $row["username"] ?></td>
                                                     <td><?= $row["staff_salary"] ?>đ</td>
                                                     <td><?= ($row["role"] == 0 ? "Admin" : "Nhân viên") ?></td>
@@ -379,6 +382,10 @@ require './connect/conn.php';
                                     <input type="text" class="form-control" name="u_dob" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Email:</label>
+                                    <input type="email" class="form-control" name="u_email" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Username:</label>
                                     <input type="text" class="form-control" name="u_user" required>
                                 </div>
@@ -434,6 +441,10 @@ require './connect/conn.php';
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Ngày sinh (yyyy/mm/dd):</label>
                                     <input type="text" class="form-control" name="u_dob" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Email:</label>
+                                    <input type="text" class="form-control" name="u_email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Username:</label>
