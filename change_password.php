@@ -269,7 +269,7 @@ if(isset($_POST["SuaProfile"])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Thông Tin Cá Nhân</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Đổi mật khẩu</h1>
                     <form method="POST">
                         <div class="mb-3">
                             <label class="form-label">Tên:</label>
@@ -278,31 +278,35 @@ if(isset($_POST["SuaProfile"])) {
                             echo GET_NAME_BY_SESSION($_SESSION["username"]);
                             ?>" readonly>
                         </div>
-                        <?php
-                        require './connect/conn.php';
-                        require './function/Function_Common.php';
-                        // $sql_GET_user = "SELECT email, username FROM account WHERE `USERNAME` = '$session_name'";
-                        $sql_GET_user = "SELECT staff.dob, account.email, account.username, staff.dob FROM account, staff WHERE account.id = staff.staff_id AND account.username = '$session_name'";
-                        $result_GET_USER = $conn->query($sql_GET_user);
-                        $row_GET_USER = $result_GET_USER->fetch_assoc();
-                        ?>
                         <div class="mb-3">
-                            <label class="form-label">Tên đăng nhập:</label>
-                            <input readonly type="text" class="form-control" value="<?php echo $session_name ?>">
+                            <label class="form-label">Mật khẩu hiện tại:</label>
+                            <input type="password" class="form-control" name="newpwd">
+                            <?php 
+      if(!empty($errors['currentpwd']['required'])) {
+      echo "<span style='color: red;'>".$errors['currentpwd']['required']."</span>";
+        }
+    ?>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Ngày sinh:</label>
-                            <input readonly type="text" class="form-control" value="<?php echo FormatDate($row_GET_USER["dob"]) ?>">
+                            <label class="form-label">Mật khẩu mới:</label>
+                            <input type="password" class="form-control" name="newpwd">
+                            <?php 
+      if(!empty($errors['newpwd']['required'])) {
+      echo "<span style='color: red;'>".$errors['newpwd']['required']."</span>";
+        }
+    ?>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Email:</label>
-                            <input readonly type="text" class="form-control" value="<?php echo $row_GET_USER["email"] ?>">
+                            <label class="form-label">Nhập lại mật khẩu:</label>
+                            <input type="password" class="form-control" name="renewpwd">
+                            <?php 
+      if(!empty($errors['renewpwd']['required'])) {
+      echo "<span style='color: red;'>".$errors['renewpwd']['required']."</span>";
+        }
+    ?>
                         </div>
-                        <button type="submit" disabled class="btn btn-primary" name="SuaProfile">Lưu</button>
-                        
-                        <a href="./change_password.php"><button type="button" class="btn btn-primary">
-                        Đổi mật khẩu
-                        </button></a>
+                        <button type="submit" class="btn btn-primary" name="SuaProfile">Lưu</button>
+                        <a href="./profile.php"><button type="button" class="btn btn-primary">Quay lại</button></a>
                         <?php 
       if(!empty($errors['edit']['required'])) {
       echo "<span style='color: red;'>".$errors['edit']['required']."</span>";

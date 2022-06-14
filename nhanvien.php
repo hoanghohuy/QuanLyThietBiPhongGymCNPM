@@ -273,6 +273,7 @@ require './connect/conn.php';
                                         <tbody>
                                             <?php
                                             require_once './connect/conn.php';
+                                            require './function/Function_Common.php';
                                             $sql_user = "SELECT account.id, staff.first_name, staff.last_name, staff.dob, account.email, account.username,staff.staff_salary, account.pwd, account.role, account.isActive FROM account, staff WHERE account.id = staff.staff_id";
                                             $result = $conn->query($sql_user)
                                             ?>
@@ -283,7 +284,7 @@ require './connect/conn.php';
                                                     <td><?= $row["id"] ?></td>
                                                     <td><?= $row["first_name"] ?></td>
                                                     <td><?= $row["last_name"] ?></td>
-                                                    <td><?= $row["dob"] ?></td>
+                                                    <td><?= FormatDate($row["dob"]) ?></td>
                                                     <td><?= $row["email"] ?></td>
                                                     <td><?= $row["username"] ?></td>
                                                     <td><?= $row["staff_salary"] ?>đ</td>
@@ -379,7 +380,7 @@ require './connect/conn.php';
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Ngày sinh (yyyy/mm/dd):</label>
-                                    <input type="text" class="form-control" name="u_dob" required>
+                                    <input type="date" class="form-control" name="u_dob" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Email:</label>
@@ -440,7 +441,7 @@ require './connect/conn.php';
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Ngày sinh (yyyy/mm/dd):</label>
-                                    <input type="text" class="form-control" name="u_dob" required>
+                                    <input type="date" class="form-control" name="u_dob" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Email:</label>
@@ -452,7 +453,7 @@ require './connect/conn.php';
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Password:</label>
-                                    <input type="text" class="form-control" name="u_pwd" required>
+                                    <input readonly type="password" class="form-control" name="u_pwd" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Lương:</label>

@@ -6,6 +6,7 @@ if(!isset($_SESSION['username']) || !$_SESSION['username']) {
 }
 require_once './connect/conn.php';
 require './function/SQL.php';
+require_once './function/Function_Common.php';
 require './connect/conn.php';
 $session_name = $_SESSION['username'];
 $GET_USER_BY_ID = "SELECT id, account_name FROM account WHERE username = '$session_name'";
@@ -299,7 +300,7 @@ $hoadon_UserID = $row["id"];
                                                 echo $row2["ncc_name"]
                                                  
                                                 ?></td>
-                                                <td><?= $row['ngaylaphoadon'] ?></td>
+                                                <td><?= FormatDate($row['ngaylaphoadon']) ?></td>
                                                 <td><?= $row['soluong'] ?></td>
                                                 <td><?= $row['hoadon_dongia'] ?></td>
                                                 <td><?= $row['total'] ?></td>
@@ -393,7 +394,7 @@ $hoadon_UserID = $row["id"];
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập hóa đơn:</label>
-                            <input type="text" class="form-control" name="ngaylaphoadon" required>
+                            <input type="date" class="form-control" name="ngaylaphoadon" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>
@@ -473,7 +474,7 @@ $hoadon_UserID = $row["id"];
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày lập:</label>
-                            <input type="text" class="form-control" name="hd_createDate" required>
+                            <input type="date" class="form-control" name="hd_createDate" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Thành tiền:</label>

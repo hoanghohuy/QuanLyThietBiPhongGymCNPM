@@ -289,6 +289,7 @@ require './connect/conn.php';
 
                                     <?php
                                         require_once './connect/conn.php';
+                                        require_once './function/Function_Common.php';
                                         $sql_eq = "SELECT e.eq_id, e.eq_name, g.group_name, n.ncc_name, e.eq_ngaynhaphang, e.eq_ngayhethanbaohanh, e.eq_dongia, e.eq_status, e.eq_image FROM equipment as e, nhacungcap as n, equipment_group as g WHERE e.ncc_id = n.ncc_id AND e.group_id = g.group_id";
                                         $result = $conn->query($sql_eq);
                                         ?>
@@ -302,8 +303,8 @@ require './connect/conn.php';
                                             <td><?= $row['eq_name'] ?></td>
                                             <td><?= $row['group_name'] ?></td>
                                             <td><?= $row['ncc_name'] ?></td>
-                                            <td><?= $row['eq_ngaynhaphang'] ?></td>
-                                            <td><?= $row['eq_ngayhethanbaohanh']?></td>
+                                            <td><?= FormatDate($row['eq_ngaynhaphang']) ?></td>
+                                            <td><?= FormatDate($row['eq_ngayhethanbaohanh']) ?></td>
                                             <td><?php
                                             $curdate = date("Y-m-d");
                                             $ngayhetbaohanh = $row['eq_ngayhethanbaohanh'];
@@ -424,11 +425,11 @@ require './connect/conn.php';
                         </div> -->
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
-                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
+                            <input type="date" class="form-control" name="eq_ngaynhaphang" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Bảo hành tới:</label>
-                            <input type="text" class="form-control" name="eq_ngayhethanbaohanh" required>
+                            <input type="date" class="form-control" name="eq_ngayhethanbaohanh" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Đơn giá:</label>
@@ -510,11 +511,11 @@ require './connect/conn.php';
                         </div> -->
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày nhập hàng:</label>
-                            <input type="text" class="form-control" name="eq_ngaynhaphang" required>
+                            <input type="date" class="form-control" name="eq_ngaynhaphang" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Bảo hành tới:</label>
-                            <input type="text" class="form-control" name="eq_ngayhethanbaohanh" required>
+                            <input type="date" class="form-control" name="eq_ngayhethanbaohanh" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Đơn giá:</label>

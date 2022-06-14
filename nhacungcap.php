@@ -264,6 +264,7 @@ require './connect/conn.php';
                                     <tbody>
                                         <?php
                                         require_once './connect/conn.php';
+                                        require_once './function/Function_Common.php';
                                         $sql_nhacungcap = "SELECT ncc_id, ncc_name, ncc_address, ncc_matchday, ncc_note FROM nhacungcap";
                                         $result = $conn->query($sql_nhacungcap);
                                         if ($result->num_rows > 0) {
@@ -272,7 +273,7 @@ require './connect/conn.php';
                                                 echo    "<td>" . $row["ncc_id"] . "</td>";
                                                 echo   "<td>" . $row["ncc_name"] . "</td>";
                                                 echo   "<td>" . $row["ncc_address"] . "</td>";
-                                                echo    "<td>" . $row["ncc_matchday"] . "</td>";
+                                                echo    "<td>" . FormatDate($row["ncc_matchday"]). "</td>";
                                                 echo "<td>" . $row["ncc_note"] . "</td>";
                                                 echo    "<td>";
 
@@ -393,7 +394,7 @@ require './connect/conn.php';
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày hợp tác (yyyy/mm/dd):</label>
-                            <input type="text" class="form-control" name="ncc_matchday" required>
+                            <input type="date" class="form-control" name="ncc_matchday" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ghi chú:</label>
@@ -436,7 +437,7 @@ require './connect/conn.php';
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Ngày hợp tác (yyyy/mm/dd):</label>
-                            <input type="text" class="form-control" name="ncc_matchday" required>
+                            <input type="date" class="form-control" name="ncc_matchday" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ghi chú:</label>

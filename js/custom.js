@@ -18,7 +18,8 @@ $(document).ready(function(){
 				$modal.find("input[name=ncc_id]").val(resp.data.ncc_id);
 				$modal.find("input[name=ncc_name]").val(resp.data.ncc_name);
 				$modal.find("input[name=ncc_address]").val(resp.data.ncc_address);
-				$modal.find("input[name=ncc_matchday]").val(resp.data.ncc_matchday);
+				$modal.find("input[name=ncc_matchday]").val(resp.data.ncc_matchday.slice(0,10));
+				console.log(resp.data.ncc_matchday.slice(0,10));
 				$modal.find("input[name=ncc_note]").val(resp.data.ncc_note);
 				// hien modal
 				$modal.modal("show");
@@ -87,7 +88,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_id]").val(resp.data.id);
 				$modal.find("input[name=u_fn]").val(resp.data.first_name);
 				$modal.find("input[name=u_ln]").val(resp.data.last_name);
-				$modal.find("input[name=u_dob]").val(resp.data.dob);
+				$modal.find("input[name=u_dob]").val(resp.data.dob.slice(0,10));
 				$modal.find("input[name=u_email]").val(resp.data.email);
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
@@ -128,7 +129,7 @@ $(document).ready(function(){
 				$modal.find("input[name=u_id]").val(resp.data.id);
 				$modal.find("input[name=u_fn]").val(resp.data.first_name);
 				$modal.find("input[name=u_ln]").val(resp.data.last_name);
-				$modal.find("input[name=u_dob]").val(resp.data.dob);
+				$modal.find("input[name=u_dob]").val(resp.data.dob.slice(0,10));
 				$modal.find("input[name=u_user]").val(resp.data.username);
 				$modal.find("input[name=u_pwd]").val(resp.data.pwd);
 				$modal.find("input[name=u_salary]").val(resp.data.staff_salary);
@@ -168,8 +169,8 @@ $(document).ready(function(){
 				$modal.find("input[name=eq_id]").val(resp.data.eq_id);
 				$modal.find("input[name=eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=eq_quantity]").val(resp.data.eq_quantity);
-				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang);
-				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh);
+				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang.slice(0,10));
+				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh.slice(0,10));
 				$modal.find("input[name=eq_dongia]").val(resp.data.eq_dongia);
 				$modal.find("option[value='"+resp.data.eq_status+"']").attr('selected','true')
 				$modal.find("img").attr("src", "./assets/thietbi/"+resp.data.eq_image+"")
@@ -206,8 +207,8 @@ $(document).ready(function(){
 				$modal.find("input[name=eq_id]").val(resp.data.eq_id);
 				$modal.find("input[name=eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=eq_quantity]").val(resp.data.eq_quantity);
-				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang);
-				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh);
+				$modal.find("input[name=eq_ngaynhaphang]").val(resp.data.eq_ngaynhaphang.slice(0,10));
+				$modal.find("input[name=eq_ngayhethanbaohanh]").val(resp.data.eq_ngayhethanbaohanh.slice(0,10));
 				$modal.find("input[name=eq_dongia]").val(resp.data.eq_dongia);
 				$modal.find("option[value='"+resp.data.eq_status+"']").attr('selected','true')
 				// hien modal
@@ -255,7 +256,7 @@ $(document).ready(function(){
 				$modal.find("input[name=hd_by]").val(resp.data.hoadon_CreactedBy);
 				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
-				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon.slice(0,10));
 				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
 				$modal.find("input[name=hd_unit]").val(resp.data.hoadon_dongia);
 				$modal.find("input[name=hd_total]").val(resp.data.total);
@@ -291,7 +292,7 @@ $(document).ready(function(){
 				$modal.find("input[name=hd_by]").val(resp.data.hoadon_CreactedBy);
 				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
-				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon.slice(0,10));
 				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
 				$modal.find("input[name=hd_unit]").val(resp.data.hoadon_dongia);
 				$modal.find("input[name=hd_total]").val(resp.data.total);
@@ -326,7 +327,7 @@ $(document).ready(function(){
 				$modal.find("input[name=hd_by]").val(resp.data.hoadon_CreactedBy);
 				$modal.find("input[name=hd_eq_name]").val(resp.data.eq_name);
 				$modal.find("input[name=hd_eq_ncc]").val(resp.data.ncc_name);
-				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon);
+				$modal.find("input[name=hd_createDate]").val(resp.data.ngaylaphoadon.slice(0,10));
 				$modal.find("input[name=hd_quantity]").val(resp.data.soluong);
 				$modal.find("input[name=hd_unit]").val(resp.data.hoadon_dongia);
 				$modal.find("input[name=hd_total]").val(resp.data.total);
