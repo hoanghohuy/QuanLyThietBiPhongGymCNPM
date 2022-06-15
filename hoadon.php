@@ -359,7 +359,7 @@ $hoadon_UserID = $row["id"];
                     <form method="post" action="./controller/hoadon_them.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã hóa đơn:</label>
-                            <input type="text" class="form-control" name="hoadon_id" required>
+                            <input type="text" class="form-control" name="hoadon_id">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>

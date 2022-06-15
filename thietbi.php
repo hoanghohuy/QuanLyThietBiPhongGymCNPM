@@ -378,7 +378,7 @@ require './connect/conn.php';
                     <form method="post" action="./controller/thietbi_them.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã thiết bị:</label>
-                            <input type="text" class="form-control" name="eq_id" required>
+                            <input type="text" class="form-control" name="eq_id">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên thiết bị:</label>

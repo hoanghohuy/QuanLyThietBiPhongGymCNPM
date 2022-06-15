@@ -382,7 +382,7 @@ require './connect/conn.php';
                     <form method="post" action="./controller/nhacungcap_them.php">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Mã cung cấp:</label>
-                            <input type="text" class="form-control" name="ncc_id" required>
+                            <input type="text" class="form-control" name="ncc_id">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Tên nhà cung cấp:</label>
